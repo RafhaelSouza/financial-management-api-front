@@ -23,4 +23,29 @@
     </div>
 
   </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="entries">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Person</th>
+            <th>Description</th>
+            <th class="col-data-header">Due</th>
+            <th class="col-data-header">Payment</th>
+            <th class="col-price-header">Price</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-entry>
+          <tr>
+            <td>{{ entry.person }}</td>
+            <td>{{ entry.description }}</td>
+            <td class="col-data-content">{{ entry.dueDate }}</td>
+            <td class="col-data-content">{{ entry.paymentDate }}</td>
+            <td class="col-price-content">{{ entry.price }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
 </div>
