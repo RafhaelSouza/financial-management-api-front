@@ -21,7 +21,7 @@ label {
 }
 
 .col-price-content {
-  text-align: right;
+  text-align: right !important;
 }
 
 .col-data-header {
@@ -29,5 +29,18 @@ label {
 }
 
 .col-data-content {
-  text-align: center;
+  text-align: center !important;
+}
+
+.col-actions-header {
+  width: 115px;
+}
+
+.col-actions-content {
+  width: 115px;
+  text-align: center !important;
+}
+
+.col-actions-content .p-button {
+  margin: 1px;
 }
