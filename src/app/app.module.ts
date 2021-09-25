@@ -8,10 +8,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { EntriesSearchComponent } from './entries-search/entries-search.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EntriesSearchComponent
   ],
   imports: [
     BrowserModule,
