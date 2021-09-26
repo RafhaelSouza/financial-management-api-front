@@ -39,12 +39,30 @@
         </ng-template>
         <ng-template pTemplate="body" let-entry>
           <tr>
-            <td>{{ entry.person }}</td>
-            <td>{{ entry.description }}</td>
-            <td class="col-data-content">{{ entry.dueDate }}</td>
-            <td class="col-data-content">{{ entry.paymentDate }}</td>
-            <td class="col-price-content" [style.color]="entry.entryType === 'EARNING' ? 'green' : 'red'">{{ entry.price }}</td>
+            <td>
+              <span class="p-column-title">Person</span>
+              {{ entry.person }}
+              </td>
+            <td>
+              <span class="p-column-title">Description</span>
+              {{ entry.description }}
+            </td>
+            <td class="col-data-content">
+              <span class="p-column-title">Due</span>
+              <span>{{ entry.dueDate | date:'dd/MM/yyyy' }}</span>
+            </td>
+            <td class="col-data-content">
+              <span class="p-column-title">Payment</span>
+              <span>{{ entry.paymentDate | date:'dd/MM/yyyy' }}</span>
+            </td>
+            <td class="col-price-content">
+              <span class="p-column-title">Price</span>
+              <span [style.color]="entry.entryType === 'EARNING' ? 'green' : 'red'">
+                {{ entry.price | number:'1.2-2' }}
+              </span>
+            </td>
             <td class="col-actions-content">
+              <span class="p-column-title"></span>
               <a pButton icon="pi pi-pencil" pTooltip="Update" tooltipPosition="top"></a>
               <button pButton icon="pi pi-trash" pTooltip="Delete" tooltipPosition="top"></button>
             </td>
