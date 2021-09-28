@@ -8,15 +8,19 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
-import { EntriesSearchComponent } from './entries-search/entries-search.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
 import { NavbarComponent } from './navbar/navbar.component';
+import { EntriesSearchComponent } from './entries-search/entries-search.component';
+import { EntriesNewComponent } from './entries-new/entries-new.component';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EntriesSearchComponent,
     NavbarComponent,
+    EntriesSearchComponent,
+    EntriesNewComponent,
     PersonsSearchComponent
   ],
   imports: [
@@ -25,7 +29,8 @@ import { PersonsSearchComponent } from './persons-search/persons-search.componen
     InputTextModule,
     ButtonModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
