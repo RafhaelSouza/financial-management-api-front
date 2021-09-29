@@ -11,6 +11,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
@@ -34,7 +35,8 @@ import { PersonsSearchComponent } from './persons-search/persons-search.componen
     TableModule,
     TooltipModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    SelectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

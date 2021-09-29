@@ -6,13 +6,17 @@
         <h1>New Entry</h1>
       </div>
 
+      <div class="p-col-12">
+        <p-selectButton [options]="entryTypes" #entryType></p-selectButton>
+      </div>
+
       <div class="p-col-6 p-md-3 p-fluid">
         <label>Due</label>
         <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true">
         </p-calendar>
       </div>
       <div class="p-col-6 p-md-3 p-fluid">
-        <label>Receivement</label>
+        <label>{{ entryType.value === 'EARNING' ? 'Receivement' : 'Payment' }}</label>
         <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true">
         </p-calendar>
       </div>

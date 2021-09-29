@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntriesNewComponent implements OnInit {
 
+  entryTypes = [
+    { label: 'Earning', value: 'EARNING' },
+    { label: 'Expense', value: 'EXPENSE' },
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
