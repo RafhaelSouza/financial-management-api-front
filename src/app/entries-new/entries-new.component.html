@@ -30,11 +30,13 @@
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Category</label>
-        <input pInputText type="text">
+        <p-dropdown [options]="categories" placeholder="Choose one"
+          #category></p-dropdown>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Person</label>
-        <input pInputText type="text">
+        <p-dropdown [options]="persons" placeholder="Choose one"
+        [filter]="true" #person></p-dropdown>
       </div>
       <div class="p-col-12 p-fluid">
         <label>Observation</label>
