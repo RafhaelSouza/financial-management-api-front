@@ -20,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
 import { EntriesNewComponent } from './entries-new/entries-new.component';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
+import { PersonsNewComponent } from './persons-new/persons-new.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PersonsSearchComponent } from './persons-search/persons-search.componen
     NavbarComponent,
     EntriesSearchComponent,
     EntriesNewComponent,
-    PersonsSearchComponent
+    PersonsSearchComponent,
+    PersonsNewComponent
   ],
   imports: [
     BrowserModule,
