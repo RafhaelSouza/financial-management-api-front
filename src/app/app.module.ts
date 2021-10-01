@@ -23,6 +23,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
 import { EntriesNewComponent } from './entries-new/entries-new.component';
+import { EntriesGridComponent } from './entries-grid/entries-grid.component';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
 import { PersonsNewComponent } from './persons-new/persons-new.component';
 import { MessageComponent } from './message/message.component';
@@ -33,6 +34,7 @@ import { MessageComponent } from './message/message.component';
     NavbarComponent,
     EntriesSearchComponent,
     EntriesNewComponent,
+    EntriesGridComponent,
     PersonsSearchComponent,
     PersonsNewComponent,
     MessageComponent
