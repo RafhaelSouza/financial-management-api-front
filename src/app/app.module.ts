@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// PrimeNG modules
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -13,7 +14,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
 
+// Other Modules
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -43,6 +46,7 @@ import { PersonsNewComponent } from './persons-new/persons-new.component';
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
+    InputMaskModule,
     CurrencyMaskModule
   ],
   providers: [],
