@@ -25,14 +25,9 @@
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Description</label>
         <input pInputText ngModel #description="ngModel" type="text" name="description" required minlength="5">
-        <div *ngIf="description.hasError('required') && description.dirty"
-          class="p-message p-message-error">
-          Type a description
-        </div>
-        <div *ngIf="description.hasError('minlength') && description.dirty"
-          class="p-message p-message-error">
-          Type at least {{ description.errors.minlength.requiredLength }} characters.
-        </div>
+        <app-message [control]="description" error="required" text="Type a description"></app-message>
+        <app-message [control]="description" error="minlength"
+          text="Type at least {{ description.errors?.minlength?.requiredLength }} characters"></app-message>
       </div>
 
       <div class="p-col-12 p-md-3 p-fluid">

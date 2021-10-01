@@ -25,6 +25,7 @@ import { EntriesSearchComponent } from './entries-search/entries-search.componen
 import { EntriesNewComponent } from './entries-new/entries-new.component';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
 import { PersonsNewComponent } from './persons-new/persons-new.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PersonsNewComponent } from './persons-new/persons-new.component';
     EntriesSearchComponent,
     EntriesNewComponent,
     PersonsSearchComponent,
-    PersonsNewComponent
+    PersonsNewComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
