@@ -26,6 +26,7 @@ import { EntriesNewComponent } from './entries-new/entries-new.component';
 import { EntriesGridComponent } from './entries-grid/entries-grid.component';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
 import { PersonsNewComponent } from './persons-new/persons-new.component';
+import { PersonsGridComponent } from './persons-grid/persons-grid.component';
 import { MessageComponent } from './message/message.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MessageComponent } from './message/message.component';
     EntriesGridComponent,
     PersonsSearchComponent,
     PersonsNewComponent,
+    PersonsGridComponent,
     MessageComponent
   ],
   imports: [
