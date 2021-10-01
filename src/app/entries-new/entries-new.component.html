@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form autocomplete="off">
 
     <div class="p-grid">
       <div class="p-col-12">
@@ -15,34 +15,50 @@
         <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true">
         </p-calendar>
       </div>
+
       <div class="p-col-6 p-md-3 p-fluid">
         <label>{{ entryType.value === 'EARNING' ? 'Receivement' : 'Payment' }}</label>
         <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true">
         </p-calendar>
       </div>
+
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Description</label>
-        <input pInputText type="text">
+        <input pInputText ngModel #description="ngModel" type="text" name="description" required minlength="5">
+        <div *ngIf="description.hasError('required') && description.dirty"
+          class="p-message p-message-error">
+          Type a description
+        </div>
+        <div *ngIf="description.hasError('minlength') && description.dirty"
+          class="p-message p-message-error">
+          Type at least {{ description.errors.minlength.requiredLength }} characters.
+        </div>
       </div>
+
       <div class="p-col-12 p-md-3 p-fluid">
         <label>Price</label>
-        <input pInputText type="text" placeholder="0,00" currencyMask
-          [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+        <input pInputText ngModel currencyMask
+          [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+          type="text" placeholder="0,00" name="price">
       </div>
+
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Category</label>
         <p-dropdown [options]="categories" placeholder="Choose one"
           #category></p-dropdown>
       </div>
+
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Person</label>
         <p-dropdown [options]="persons" placeholder="Choose one"
         [filter]="true" #person></p-dropdown>
       </div>
+
       <div class="p-col-12 p-fluid">
         <label>Observation</label>
         <textarea pInputTextarea rows="3"></textarea>
       </div>
+
       <div class="p-col-12">
         <button pButton type="submit" label="Save"></button>
         <button pButton type="button" label="New" class="p-button-info"></button>
