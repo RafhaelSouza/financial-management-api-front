@@ -1,3 +1,4 @@
+import { EntriesModule } from './entries/entries.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,9 +22,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { NavbarComponent } from './navbar/navbar.component';
-import { EntriesSearchComponent } from './entries-search/entries-search.component';
-import { EntriesNewComponent } from './entries-new/entries-new.component';
-import { EntriesGridComponent } from './entries-grid/entries-grid.component';
+
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
 import { PersonsNewComponent } from './persons-new/persons-new.component';
 import { PersonsGridComponent } from './persons-grid/persons-grid.component';
@@ -33,9 +32,7 @@ import { MessageComponent } from './message/message.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    EntriesSearchComponent,
-    EntriesNewComponent,
-    EntriesGridComponent,
+
     PersonsSearchComponent,
     PersonsNewComponent,
     PersonsGridComponent,
@@ -46,6 +43,9 @@ import { MessageComponent } from './message/message.component';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
+
+    EntriesModule,
+
     InputTextModule,
     ButtonModule,
     TableModule,
