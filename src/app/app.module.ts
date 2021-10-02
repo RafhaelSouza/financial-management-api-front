@@ -5,14 +5,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { CoreModule } from './core/core.module';
 import { PersonsModule } from './persons/persons.module';
 import { EntriesModule } from './entries/entries.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +19,7 @@ import { EntriesModule } from './entries/entries.module';
     FormsModule,
     AppRoutingModule,
 
+    CoreModule,
     EntriesModule,
     PersonsModule
   ],
