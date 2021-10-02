@@ -9,24 +9,24 @@
       <div class="p-col-12 p-fluid">
         <label>Name</label>
         <input pInputText ngModel #name="ngModel" name="name" type="text" required minlength="5">
-        <!--<app-message [control]="name" error="required"
+        <app-message [control]="name" error="required"
           text="Type a name"></app-message>
         <app-message [control]="name" error="minlength"
-          text="Type at least {{ name.errors?.minlength?.requiredLength }} characters"></app-message>-->
+          text="Type at least {{ name.errors?.minlength?.requiredLength }} characters"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Street</label>
         <input pInputText ngModel #street="ngModel" name="street" type="text" required>
-        <!--<app-message [control]="street" error="required"
-          text="Type a street"></app-message>-->
+        <app-message [control]="street" error="required"
+          text="Type a street"></app-message>
       </div>
 
       <div class="p-col-12 p-md-3 p-fluid">
         <label>Number</label>
         <input pInputText ngModel #number="ngModel" name="number" type="text" required>
-        <!--<app-message [control]="number" error="required"
-          text="Type a number"></app-message>-->
+        <app-message [control]="number" error="required"
+          text="Type a number"></app-message>
       </div>
 
       <div class="p-col-12 p-md-4 p-fluid">
@@ -37,29 +37,29 @@
       <div class="p-col-12 p-md-4 p-fluid">
         <label>District</label>
         <input pInputText ngModel #district="ngModel" name="district" type="text" required>
-        <!--<app-message [control]="district" error="required"
-          text="Type a district"></app-message>-->
+        <app-message [control]="district" error="required"
+          text="Type a district"></app-message>
       </div>
 
       <div class="p-col-12 p-md-4 p-fluid">
         <label>Postal Code</label>
         <p-inputMask ngModel #postalCode="ngModel" name="postalCode" mask="99.999-999" required></p-inputMask>
-        <!--<app-message [control]="postalCode" error="required"
-          text="Type a postal code"></app-message>-->
+        <app-message [control]="postalCode" error="required"
+          text="Type a postal code"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>City</label>
         <input pInputText ngModel #city="ngModel" name="city" type="text" required>
-        <!--<app-message [control]="city" error="required"
-          text="Type a city"></app-message>-->
+        <app-message [control]="city" error="required"
+          text="Type a city"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>State</label>
         <input pInputText ngModel #state="ngModel" name="state" type="text" required>
-        <!--<app-message [control]="state" error="required"
-          text="Type a state"></app-message>-->
+        <app-message [control]="state" error="required"
+          text="Type a state"></app-message>
       </div>
 
       <div class="p-col-12">
