@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntriesSearchComponent implements OnInit {
 
+  description: string;
   entries = [];
 
   constructor(private entryService: EntryService) { }
@@ -17,7 +18,7 @@ export class EntriesSearchComponent implements OnInit {
   }
 
   search() {
-    this.entryService.search()
+    this.entryService.search({description: this.description})
       .then(entries => this.entries = entries);
   }
 

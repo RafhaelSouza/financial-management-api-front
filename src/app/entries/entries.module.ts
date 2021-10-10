@@ -15,13 +15,11 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
 import { EntriesNewComponent } from './entries-new/entries-new.component';
-import { EntriesGridComponent } from './entries-grid/entries-grid.component';
 
 @NgModule({
   declarations: [
     EntriesSearchComponent,
-    EntriesNewComponent,
-    EntriesGridComponent
+    EntriesNewComponent
   ],
   imports: [
     CommonModule,
