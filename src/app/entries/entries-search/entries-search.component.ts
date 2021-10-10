@@ -1,4 +1,4 @@
-import { EntryService } from './../entry.service';
+import { EntryService, EntryFilter } from './../entry.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class EntriesSearchComponent implements OnInit {
 
   description: string;
+  dueDateFrom: Date;
+  dueDateTo: Date;
   entries = [];
 
   constructor(private entryService: EntryService) { }
@@ -18,7 +20,13 @@ export class EntriesSearchComponent implements OnInit {
   }
 
   search() {
-    this.entryService.search({description: this.description})
+    const filter: EntryFilter = {
+      description: this.description,
+      dueDateFrom: this.dueDateFrom,
+      dueDateTo: this.dueDateTo
+    };
+
+    this.entryService.search(filter)
       .then(entries => this.entries = entries);
   }
 
