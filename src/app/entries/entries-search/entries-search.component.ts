@@ -8,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntriesSearchComponent implements OnInit {
 
-  description: string;
-  dueDateFrom: Date;
-  dueDateTo: Date;
+  filter = new EntryFilter();
   entries = [];
 
   constructor(private entryService: EntryService) { }
@@ -20,14 +18,10 @@ export class EntriesSearchComponent implements OnInit {
   }
 
   search() {
-    const filter: EntryFilter = {
-      description: this.description,
-      dueDateFrom: this.dueDateFrom,
-      dueDateTo: this.dueDateTo
-    };
-
-    this.entryService.search(filter)
-      .then(entries => this.entries = entries);
+    this.entryService.search(this.filter)
+      .then(result => {
+        this.entries = result.entries;
+      });
   }
 
 }

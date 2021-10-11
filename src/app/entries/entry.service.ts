@@ -3,10 +3,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import * as moment from 'moment';
 
-export interface EntryFilter {
+export class EntryFilter {
   description: string;
   dueDateFrom: Date;
   dueDateTo: Date;
+  page = 0;
+  itemsPerPage = 5;
 }
 
 @Injectable()
@@ -20,7 +22,9 @@ export class EntryService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');
 
-    let params = new HttpParams();
+    let params = new HttpParams()
+      .set('page', filter.page.toString())
+      .set('size', filter.itemsPerPage.toString());
 
     if (filter.description) {
       params = params.set('description', filter.description);
@@ -38,6 +42,15 @@ export class EntryService {
 
     return this.http.get(`${this.entriesUrl}?summary`, { headers, params })
       .toPromise()
-      .then(response => response['content']);
+      .then(response => {
+        const entries = response['content'];
+
+        const result = {
+          entries,
+          total: response['content']
+        };
+
+        return result;
+      });
   }
 }
