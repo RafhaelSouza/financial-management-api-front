@@ -1,3 +1,5 @@
+import { PersonFilter, PersonService } from './../person.service';
+import { LazyLoadEvent } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonsSearchComponent {
 
-  persons = [
-    { name: 'Kufathir Eazkioli', city: 'Belo Horizonte', state: 'MG', active: true },
-    { name: 'Iszoion Nirond', city: 'Campinas', state: 'SP', active: false },
-    { name: 'Keinnoa Orgur', city: 'Florianópolis', state: 'SC', active: true },
-    { name: 'Baga Teasi', city: 'Cascavel', state: 'PR', active: true },
-    { name: 'Fewaomub Mosilo', city: 'Búzios', state: 'RJ', active: false },
-    { name: 'Winzae Pinpayndir', city: 'Belo Horizonte', state: 'MG', active: true }
-  ];
+  totalRegisters = 0;
+  filter = new PersonFilter;
+  persons = [];
+
+  constructor(private personService: PersonService) { }
+
+  search(page = 0) {
+    this.filter.page = page;
+
+    this.personService.search(this.filter)
+      .then(result => {
+        this.totalRegisters = result.total;
+        this.persons = result.persons;
+      });
+  }
+
+  toChangePage(event: LazyLoadEvent) {
+    const page = event.first / event.rows;
+    this.search(page);
+  }
 
 }
