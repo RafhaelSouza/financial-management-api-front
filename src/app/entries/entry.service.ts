@@ -47,7 +47,7 @@ export class EntryService {
 
         const result = {
           entries,
-          total: response['content']
+          total: response['total_elements']
         };
 
         return result;
