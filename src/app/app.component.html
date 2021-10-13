@@ -1,6 +1,14 @@
 <app-navbar></app-navbar>
 <app-entries-search></app-entries-search>
 <p-toast></p-toast>
+<p-confirmDialog header="Really?" icon="pi pi-question-circle" #confirmation>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" label="YES"
+      (click)="confirmation.accept()"></button>
+    <button type="button" pButton icon="pi pi-times" label="NOT"
+      (click)="confirmation.reject()"></button>
+  </p-footer>
+</p-confirmDialog>
 <!--<app-entries-search></app-entries-search>-->
 <!--<app-entries-new></app-entries-new>-->
 <!--<app-persons-new></app-persons-new>-->

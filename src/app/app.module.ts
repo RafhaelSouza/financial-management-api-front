@@ -4,8 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,12 +28,18 @@ import { PersonService } from './persons/person.service';
     HttpClientModule,
 
     ToastModule,
+    ConfirmDialogModule,
 
     CoreModule,
     EntriesModule,
     PersonsModule
   ],
-  providers: [MessageService, EntryService, PersonService],
+  providers: [
+    MessageService,
+    ConfirmationService,
+    EntryService,
+    PersonService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

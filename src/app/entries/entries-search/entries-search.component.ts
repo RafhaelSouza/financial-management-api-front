@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent } from 'primeng/api';
+import { LazyLoadEvent, MessageService, ConfirmationService} from 'primeng/api';
 import { Table } from 'primeng/table';
-import { MessageService } from 'primeng/api';
 
 import { EntryService, EntryFilter } from './../entry.service';
 
@@ -20,7 +19,9 @@ export class EntriesSearchComponent implements OnInit {
 
   constructor(
     private entryService: EntryService,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private confirmation: ConfirmationService
+  ) { }
 
   ngOnInit() {}
 
@@ -37,6 +38,15 @@ export class EntriesSearchComponent implements OnInit {
   toChangePage(event: LazyLoadEvent) {
     const page = event.first / event.rows;
     this.search(page);
+  }
+
+  toConfirmDeleting(entry: any) {
+    this.confirmation.confirm({
+      message: 'Are you sure about this?',
+      accept: () => {
+        this.delete(entry);
+      }
+    });
   }
 
   delete(entry: any) {
