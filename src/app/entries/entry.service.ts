@@ -51,6 +51,15 @@ export class EntryService {
         };
 
         return result;
-      });
+    });
+  }
+
+  delete(id: number): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.entriesUrl}/${id}`, { headers })
+      .toPromise()
+      .then(() => null);
   }
 }

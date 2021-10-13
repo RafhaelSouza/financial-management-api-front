@@ -32,7 +32,7 @@
       <p-table [value]="entries" [paginator]="true"
         [rows]="filter.itemsPerPage" [responsive]="true"
         [lazy]="true" [totalRecords]="totalRegisters"
-        (onLazyLoad)="toChangePage($event)">
+        (onLazyLoad)="toChangePage($event)" #tableSearch>
         <ng-template pTemplate="emptymessage">
           <tr>
             <td colspan="6">
@@ -70,14 +70,15 @@
             </td>
             <td class="col-price-content">
               <span class="p-column-title">Price</span>
-              <span [style.color]="entry.entryType === 'EARNING' ? 'green' : 'red'">
+              <span [style.color]="entry.entry_type === 'EARNING' ? 'green' : 'red'">
                 {{ entry.price | number:'1.2-2' }}
               </span>
             </td>
             <td class="col-actions-content">
               <span class="p-column-title"></span>
               <a pButton icon="pi pi-pencil" pTooltip="Update" tooltipPosition="top"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Delete" tooltipPosition="top"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Delete" tooltipPosition="top"
+              (click)="delete(entry)"></button>
             </td>
           </tr>
         </ng-template>

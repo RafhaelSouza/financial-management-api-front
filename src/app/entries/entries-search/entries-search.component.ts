@@ -1,6 +1,7 @@
 import { EntryService, EntryFilter } from './../entry.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-entries-search',
@@ -12,6 +13,7 @@ export class EntriesSearchComponent implements OnInit {
   totalRegisters = 0;
   filter = new EntryFilter();
   entries = [];
+  @ViewChild('tableSearch') grid: Table;
 
   constructor(private entryService: EntryService) { }
 
@@ -30,6 +32,13 @@ export class EntriesSearchComponent implements OnInit {
   toChangePage(event: LazyLoadEvent) {
     const page = event.first / event.rows;
     this.search(page);
+  }
+
+  delete(entry: any) {
+    this.entryService.delete(entry.id)
+      .then(() => {
+        this.grid.clear();
+      });
   }
 
 }
