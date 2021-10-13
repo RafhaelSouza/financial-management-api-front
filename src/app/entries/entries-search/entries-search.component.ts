@@ -1,7 +1,10 @@
-import { EntryService, EntryFilter } from './../entry.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { LazyLoadEvent } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { MessageService } from 'primeng/api';
+
+import { EntryService, EntryFilter } from './../entry.service';
 
 @Component({
   selector: 'app-entries-search',
@@ -15,7 +18,9 @@ export class EntriesSearchComponent implements OnInit {
   entries = [];
   @ViewChild('tableSearch') grid: Table;
 
-  constructor(private entryService: EntryService) { }
+  constructor(
+    private entryService: EntryService,
+    private messageService: MessageService) { }
 
   ngOnInit() {}
 
@@ -38,6 +43,8 @@ export class EntriesSearchComponent implements OnInit {
     this.entryService.delete(entry.id)
       .then(() => {
         this.grid.clear();
+
+        this.messageService.add({ severity: 'success', detail: 'Entry deleted com successful!' });
       });
   }
 
