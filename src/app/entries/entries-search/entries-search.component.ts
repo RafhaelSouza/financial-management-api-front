@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, MessageService, ConfirmationService} from 'primeng/api';
 import { Table } from 'primeng/table';
 
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { EntryService, EntryFilter } from './../entry.service';
 
 @Component({
@@ -18,9 +19,10 @@ export class EntriesSearchComponent implements OnInit {
   @ViewChild('tableSearch') grid: Table;
 
   constructor(
-    private entryService: EntryService,
+    private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private entryService: EntryService
   ) { }
 
   ngOnInit() {}
@@ -32,7 +34,8 @@ export class EntriesSearchComponent implements OnInit {
       .then(result => {
         this.totalRegisters = result.total;
         this.entries = result.entries;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   toChangePage(event: LazyLoadEvent) {

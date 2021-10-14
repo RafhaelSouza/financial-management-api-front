@@ -9,6 +9,8 @@ import { ToastModule } from 'primeng/toast';
 
 import { EntryService } from './../entries/entry.service';
 import { PersonService } from './../persons/person.service';
+
+import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
 
 registerLocaleData(localePt);
@@ -29,7 +31,7 @@ registerLocaleData(localePt);
   providers: [
     EntryService,
     PersonService,
-    //ErrorHandlerService,
+    ErrorHandlerService,
 
     ConfirmationService,
     MessageService,
