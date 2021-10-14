@@ -47,4 +47,13 @@ export class PersonService {
       .toPromise()
       .then(response => response['content']);
   }
+
+  delete(id: number): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.personsUrl}/${id}`, { headers })
+      .toPromise()
+      .then(() => null);
+  }
 }

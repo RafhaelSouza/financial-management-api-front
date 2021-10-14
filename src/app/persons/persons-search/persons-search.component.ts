@@ -1,7 +1,11 @@
-import { PersonFilter, PersonService } from './../person.service';
-import { LazyLoadEvent } from 'primeng/api';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
+import { Table } from 'primeng/table';
+
+import { ErrorHandlerService } from './../../core/error-handler.service';
+
+import { PersonFilter, PersonService } from './../person.service';
 @Component({
   selector: 'app-persons-search',
   templateUrl: './persons-search.component.html',
@@ -12,8 +16,14 @@ export class PersonsSearchComponent {
   totalRegisters = 0;
   filter = new PersonFilter;
   persons = [];
+  @ViewChild('tabela') grid: Table;
 
-  constructor(private personService: PersonService) { }
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private confirmation: ConfirmationService,
+    private messageService: MessageService,
+    private personService: PersonService
+  ) { }
 
   search(page = 0) {
     this.filter.page = page;
@@ -28,6 +38,25 @@ export class PersonsSearchComponent {
   toChangePage(event: LazyLoadEvent) {
     const page = event.first / event.rows;
     this.search(page);
+  }
+
+  toConfirmDeleting(entry: any) {
+    this.confirmation.confirm({
+      message: 'Are you sure about this?',
+      accept: () => {
+        this.delete(entry);
+      }
+    });
+  }
+
+  delete(person: any) {
+    this.personService.delete(person.id)
+      .then(() => {
+        this.grid.clear();
+
+        this.messageService.add({ severity: 'success', detail: 'Person deleted com successful!' });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
 }
