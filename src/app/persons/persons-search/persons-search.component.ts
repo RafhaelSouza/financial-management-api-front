@@ -40,6 +40,19 @@ export class PersonsSearchComponent {
     this.search(page);
   }
 
+  updateStatus(person: any): void {
+    const newStatus = !person.active;
+
+    this.personService.updateStatus(person.id, newStatus)
+      .then(() => {
+        const action = newStatus ? 'active' : 'inactive';
+
+        person.active = newStatus;
+        this.messageService.add({ severity: 'success', detail: `person ${action} successful!` });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
   toConfirmDeleting(entry: any) {
     this.confirmation.confirm({
       message: 'Are you sure about this?',
@@ -54,7 +67,7 @@ export class PersonsSearchComponent {
       .then(() => {
         this.grid.clear();
 
-        this.messageService.add({ severity: 'success', detail: 'Person deleted com successful!' });
+        this.messageService.add({ severity: 'success', detail: 'Person deleted successful!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

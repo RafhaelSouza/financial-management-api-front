@@ -48,6 +48,16 @@ export class PersonService {
       .then(response => response['content']);
   }
 
+  updateStatus(id: number, active: boolean): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+
+    return this.http.put(`${this.personsUrl}/${id}/active`, active, { headers })
+      .toPromise()
+      .then(() => null);
+  }
+
   delete(id: number): Promise<void> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');

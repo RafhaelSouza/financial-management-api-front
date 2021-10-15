@@ -57,7 +57,7 @@ export class EntriesSearchComponent implements OnInit {
       .then(() => {
         this.grid.clear();
 
-        this.messageService.add({ severity: 'success', detail: 'Entry deleted com successful!' });
+        this.messageService.add({ severity: 'success', detail: 'Entry deleted successful!' });
       });
   }
 

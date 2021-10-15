@@ -49,7 +49,8 @@
             </td>
             <td>
               <span class="p-column-title">Status</span>
-              <a href="#" [pTooltip]="person.active ? 'Inactive' : 'Active'" tooltipPosition="top">
+              <a href="#" [pTooltip]="person.active ? 'Inactive' : 'Active'" tooltipPosition="top"
+                (click)="updateStatus(person)">
                 {{ person.active ? 'Active' : 'Inactive' }}
               </a>
             </td>
