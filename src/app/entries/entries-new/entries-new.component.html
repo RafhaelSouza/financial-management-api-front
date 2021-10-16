@@ -45,14 +45,14 @@
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Category</label>
-        <p-dropdown [(ngModel)]="entry.category" name="category"
+        <p-dropdown [(ngModel)]="entry.category.id" name="category"
           [options]="categories" placeholder="Choose one" #category>
         </p-dropdown>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Person</label>
-        <p-dropdown [(ngModel)]="entry.person" name="person"
+        <p-dropdown [(ngModel)]="entry.person.id" name="person"
           [options]="persons" placeholder="Choose one" [filter]="true" #person>
         </p-dropdown>
       </div>

@@ -1,10 +1,13 @@
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
+import { MessageService } from 'primeng/api';
+
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PersonService } from './../../persons/person.service';
 import { CategoryService } from './../../categories/category.service';
 import { Entry } from './../../core/model';
+import { EntryService } from '../entry.service';
 
 @Component({
   selector: 'app-entries-new',
@@ -24,8 +27,10 @@ export class EntriesNewComponent implements OnInit {
 
   constructor(
     private errorHandler: ErrorHandlerService,
+    private messageService: MessageService,
     private categoryService:CategoryService,
-    private personService:PersonService
+    private personService:PersonService,
+    private entryService:EntryService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +55,14 @@ export class EntriesNewComponent implements OnInit {
   }
 
   save(form: FormControl) {
-    console.log(this.entry);
+    this.entryService.save(this.entry)
+      .then(() => {
+        this.messageService.add({ severity: 'success', detail: 'Entry saved successful!' });
+
+        form.reset();
+        this.entry = new Entry();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
 }

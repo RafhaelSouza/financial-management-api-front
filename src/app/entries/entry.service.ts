@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import * as moment from 'moment';
 
+import { Entry } from './../core/model';
+
 export class EntryFilter {
   description: string;
   dueDateFrom: Date;
@@ -52,6 +54,15 @@ export class EntryService {
 
         return result;
     });
+  }
+
+  save(entry: Entry): Promise<Entry> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+
+    return this.http.post<Entry>(this.entriesUrl, entry, { headers })
+      .toPromise();
   }
 
   delete(id: number): Promise<void> {
