@@ -1,5 +1,17 @@
+export class Address {
+  street: string;
+  number: string;
+  complement: string;
+  district: string;
+  postal_code: string;
+  city: string;
+  state: string;
+}
 export class Person {
   id: number;
+  name: string;
+  address = new Address();
+  active = true;
 }
 
 export class Category {

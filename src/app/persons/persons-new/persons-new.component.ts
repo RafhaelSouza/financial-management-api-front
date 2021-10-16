@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+import { MessageService } from 'primeng/api';
+
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { PersonService } from '../person.service';
+import { Person } from './../../core/model';
 
 @Component({
   selector: 'app-persons-new',
@@ -7,9 +14,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonsNewComponent implements OnInit {
 
-  constructor() { }
+  person = new Person();
+
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private messageService: MessageService,
+    private personService: PersonService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  save(form: FormControl) {
+    this.personService.save(this.person)
+      .then(() => {
+        this.messageService.add({ severity: 'success', detail: 'Person saved successful!' });
+
+        form.reset();
+        this.person = new Person();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
 }

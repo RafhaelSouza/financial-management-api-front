@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { Person } from '../core/model';
+
 export class PersonFilter {
   name: string;
   page = 0;
@@ -46,6 +48,15 @@ export class PersonService {
     return this.http.get(this.personsUrl, { headers })
       .toPromise()
       .then(response => response['content']);
+  }
+
+  save(person: Person): Promise<Person> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+
+    return this.http.post<Person>(this.personsUrl, person, { headers })
+      .toPromise();
   }
 
   updateStatus(id: number, active: boolean): Promise<void> {
