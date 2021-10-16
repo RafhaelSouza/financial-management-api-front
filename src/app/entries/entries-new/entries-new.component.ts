@@ -1,8 +1,10 @@
-import { PersonService } from './../../persons/person.service';
+import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-import { CategoryService } from './../../categories/category.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
+import { PersonService } from './../../persons/person.service';
+import { CategoryService } from './../../categories/category.service';
+import { Entry } from './../../core/model';
 
 @Component({
   selector: 'app-entries-new',
@@ -11,14 +13,14 @@ import { ErrorHandlerService } from './../../core/error-handler.service';
 })
 export class EntriesNewComponent implements OnInit {
 
-  entryTypes = [
+  entry_types = [
     { label: 'Earning', value: 'EARNING' },
     { label: 'Expense', value: 'EXPENSE' },
   ];
 
   categories = [];
-
   persons = [];
+  entry = new Entry();
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -45,6 +47,10 @@ export class EntriesNewComponent implements OnInit {
         this.persons = persons.map(p => ({ label: p.name, value: p.id }));
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  save(form: FormControl) {
+    console.log(this.entry);
   }
 
 }
