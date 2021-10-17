@@ -15,6 +15,7 @@ import { EntriesSearchComponent } from './entries/entries-search/entries-search.
 const routes: Routes = [
   { path: 'entries', component: EntriesSearchComponent },
   { path: 'entries/new', component: EntriesNewComponent },
+  { path: 'entries/:id', component: EntriesNewComponent },
   { path: 'persons', component: PersonsSearchComponent }
 ];
 

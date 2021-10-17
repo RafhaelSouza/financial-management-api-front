@@ -1,5 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { MessageService } from 'primeng/api';
 
@@ -26,6 +27,7 @@ export class EntriesNewComponent implements OnInit {
   entry = new Entry();
 
   constructor(
+    private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private categoryService:CategoryService,
@@ -36,6 +38,7 @@ export class EntriesNewComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this.loadPersons();
+    console.log("Receiving id: " + this.route.snapshot.params['id']);
   }
 
   loadCategories() {

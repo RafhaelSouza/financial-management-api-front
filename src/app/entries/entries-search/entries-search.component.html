@@ -76,7 +76,8 @@
             </td>
             <td class="col-actions-content">
               <span class="p-column-title"></span>
-              <a pButton icon="pi pi-pencil" pTooltip="Update" tooltipPosition="top"></a>
+              <a pButton icon="pi pi-pencil" pTooltip="Update" tooltipPosition="top"
+                [routerLink]="['/entries', entry.id]"></a>
               <button pButton icon="pi pi-trash" pTooltip="Delete" tooltipPosition="top"
               (click)="toConfirmDeleting(entry)"></button>
             </td>
