@@ -38,7 +38,24 @@ export class EntriesNewComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this.loadPersons();
-    console.log("Receiving id: " + this.route.snapshot.params['id']);
+
+    const entryId = this.route.snapshot.params['id'];
+
+    if (entryId) {
+      this.loadEntry(entryId);
+    }
+  }
+
+  get updating() {
+    return Boolean(this.entry.id)
+  }
+
+  loadEntry(id: number) {
+    this.entryService.searchById(id)
+      .then(entry => {
+        this.entry = entry;
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   loadCategories() {
