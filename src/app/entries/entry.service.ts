@@ -56,6 +56,21 @@ export class EntryService {
     });
   }
 
+  searchById(id: number): Promise<Entry> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');
+
+    return this.http.get<Entry>(`${this.entriesUrl}/${id}`, { headers })
+      .toPromise()
+      .then(response => {
+        const entry = response;
+
+        this.stringToDateConverter([entry]);
+
+        return entry;
+      });
+  }
+
   save(entry: Entry): Promise<Entry> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==')
@@ -65,6 +80,22 @@ export class EntryService {
       .toPromise();
   }
 
+  update(entry: Entry): Promise<Entry> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<Entry>(`${this.entriesUrl}/${entry.id}`,entry, { headers })
+      .toPromise()
+      .then(response => {
+        const updatedEntry = response;
+
+        this.stringToDateConverter([updatedEntry]);
+
+        return updatedEntry;
+      });
+  }
+
   delete(id: number): Promise<void> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');
@@ -72,5 +103,15 @@ export class EntryService {
     return this.http.delete(`${this.entriesUrl}/${id}`, { headers })
       .toPromise()
       .then(() => null);
+  }
+
+  private stringToDateConverter(entries: Entry[]) {
+    for (const entry of entries) {
+      entry.due_date = moment(entry.due_date, 'YYYY-MM-DD').toDate();
+
+      if (entry.payment_date) {
+        entry.payment_date = moment(entry.payment_date, 'YYYY-MM-DD').toDate();
+      }
+    }
   }
 }
