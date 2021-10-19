@@ -75,12 +75,30 @@ export class EntriesNewComponent implements OnInit {
   }
 
   save(form: FormControl) {
+    if (this.updating) {
+      this.updateEntry(form);
+    } else {
+      this.insertEntry(form);
+    }
+  }
+
+  insertEntry(form: FormControl) {
     this.entryService.save(this.entry)
       .then(() => {
         this.messageService.add({ severity: 'success', detail: 'Entry saved successful!' });
 
         form.reset();
         this.entry = new Entry();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  updateEntry(form: FormControl) {
+    this.entryService.update(this.entry)
+      .then(entry => {
+        this.entry = entry;
+
+        this.messageService.add({ severity: 'success', detail: 'Entry updated successful!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
