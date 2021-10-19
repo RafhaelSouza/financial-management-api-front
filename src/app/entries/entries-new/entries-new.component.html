@@ -64,7 +64,8 @@
 
       <div class="p-col-12">
         <button style="margin-right: 2px;" pButton type="submit" label="Save"></button>
-        <button style="margin-right: 2px;" pButton type="button" label="New" class="p-button-info"></button>
+        <button style="margin-right: 2px;" (click)="new(formNewEntry)" pButton
+          type="button" label="New" class="p-button-info"></button>
         <a routerLink="/entries">Back to search</a>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MessageService } from 'primeng/api';
 
@@ -27,6 +27,7 @@ export class EntriesNewComponent implements OnInit {
   entry = new Entry();
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
@@ -84,11 +85,10 @@ export class EntriesNewComponent implements OnInit {
 
   insertEntry(form: FormControl) {
     this.entryService.save(this.entry)
-      .then(() => {
+      .then(savedEntry => {
         this.messageService.add({ severity: 'success', detail: 'Entry saved successful!' });
 
-        form.reset();
-        this.entry = new Entry();
+        this.router.navigate(['/entries', savedEntry.id]);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -101,6 +101,16 @@ export class EntriesNewComponent implements OnInit {
         this.messageService.add({ severity: 'success', detail: 'Entry updated successful!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  new(form: FormControl) {
+    form.reset();
+
+    setTimeout(function() {
+      this.entry = new Entry();
+    }.bind(this), 1);
+
+    this.router.navigate(['/entries/new']);
   }
 
 }
