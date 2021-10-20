@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { LazyLoadEvent, MessageService, ConfirmationService} from 'primeng/api';
 import { Table } from 'primeng/table';
@@ -19,13 +20,16 @@ export class EntriesSearchComponent implements OnInit {
   @ViewChild('tableSearch') grid: Table;
 
   constructor(
+    private title: Title,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmation: ConfirmationService,
     private entryService: EntryService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('Entries Search');
+  }
 
   search(page = 0) {
     this.filter.page = page;

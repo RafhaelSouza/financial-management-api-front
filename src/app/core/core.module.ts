@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import localePt from '@angular/common/locales/pt';
+import { Title } from '@angular/platform-browser';
 
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -40,7 +41,8 @@ registerLocaleData(localePt);
 
     ConfirmationService,
     MessageService,
-    { provide: LOCALE_ID, useValue: 'pt-BR' }
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    Title
   ]
 })
 export class CoreModule { }

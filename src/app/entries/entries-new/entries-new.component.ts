@@ -1,6 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { MessageService } from 'primeng/api';
 
@@ -27,6 +28,7 @@ export class EntriesNewComponent implements OnInit {
   entry = new Entry();
 
   constructor(
+    private title: Title,
     private router: Router,
     private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService,
@@ -37,6 +39,8 @@ export class EntriesNewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.title.setTitle('New Entry');
+
     this.loadCategories();
     this.loadPersons();
 
@@ -55,6 +59,7 @@ export class EntriesNewComponent implements OnInit {
     this.entryService.searchById(id)
       .then(entry => {
         this.entry = entry;
+        this.updateEditionTitle();
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -99,6 +104,7 @@ export class EntriesNewComponent implements OnInit {
         this.entry = entry;
 
         this.messageService.add({ severity: 'success', detail: 'Entry updated successful!' });
+        this.updateEditionTitle();
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -111,6 +117,10 @@ export class EntriesNewComponent implements OnInit {
     }.bind(this), 1);
 
     this.router.navigate(['/entries/new']);
+  }
+
+  updateEditionTitle() {
+    this.title.setTitle(`Edition of entry: ${this.entry.description}`);
   }
 
 }
