@@ -11,13 +11,16 @@ import { EntriesModule } from './entries/entries.module';
 import { PersonsSearchComponent } from './persons/persons-search/persons-search.component';
 import { EntriesNewComponent } from './entries/entries-new/entries-new.component';
 import { EntriesSearchComponent } from './entries/entries-search/entries-search.component';
+import { NotFoundPageComponent } from './core/not-found-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'entries', pathMatch: 'full' },
   { path: 'entries', component: EntriesSearchComponent },
   { path: 'entries/new', component: EntriesNewComponent },
   { path: 'entries/:id', component: EntriesNewComponent },
-  { path: 'persons', component: PersonsSearchComponent }
+  { path: 'persons', component: PersonsSearchComponent },
+  { path: 'not-found-page', component: NotFoundPageComponent },
+  { path: '**', redirectTo: 'not-found-page' }
 ];
 
 @NgModule({

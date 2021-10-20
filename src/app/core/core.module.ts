@@ -14,11 +14,12 @@ import { CategoryService } from './../categories/category.service';
 
 import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NotFoundPageComponent } from './not-found-page.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, NotFoundPageComponent],
   imports: [
     CommonModule,
     RouterModule,

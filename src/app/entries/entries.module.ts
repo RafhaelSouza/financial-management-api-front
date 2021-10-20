@@ -39,9 +39,6 @@ import { EntriesNewComponent } from './entries-new/entries-new.component';
 
     SharedModule
   ],
-  exports: [
-    EntriesSearchComponent,
-    EntriesNewComponent
-  ]
+  exports: []
 })
 export class EntriesModule { }
