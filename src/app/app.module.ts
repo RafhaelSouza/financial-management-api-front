@@ -13,6 +13,7 @@ import { EntriesNewComponent } from './entries/entries-new/entries-new.component
 import { EntriesSearchComponent } from './entries/entries-search/entries-search.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'entries', pathMatch: 'full' },
   { path: 'entries', component: EntriesSearchComponent },
   { path: 'entries/new', component: EntriesNewComponent },
   { path: 'entries/:id', component: EntriesNewComponent },
