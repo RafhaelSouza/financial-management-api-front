@@ -14,6 +14,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
+import { EntriesRoutingModule } from './entries-routing.module';
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
 import { EntriesNewComponent } from './entries-new/entries-new.component';
 
@@ -37,7 +38,8 @@ import { EntriesNewComponent } from './entries-new/entries-new.component';
     DropdownModule,
     CurrencyMaskModule,
 
-    SharedModule
+    SharedModule,
+    EntriesRoutingModule
   ],
   exports: []
 })
