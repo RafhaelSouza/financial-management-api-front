@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Title } from '@angular/platform-browser';
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
@@ -22,8 +22,13 @@ export class PersonsSearchComponent {
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,
     private messageService: MessageService,
-    private personService: PersonService
+    private personService: PersonService,
+    private title: Title
   ) { }
+
+  ngOnInit() {
+    this.title.setTitle('Entries Search');
+  }
 
   search(page = 0) {
     this.filter.page = page;
@@ -32,7 +37,8 @@ export class PersonsSearchComponent {
       .then(result => {
         this.totalRegisters = result.total;
         this.persons = result.persons;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   toChangePage(event: LazyLoadEvent) {

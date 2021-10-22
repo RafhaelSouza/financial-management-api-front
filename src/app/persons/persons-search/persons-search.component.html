@@ -23,6 +23,14 @@
         [paginator]="true" [rows]="5" [rows]="filter.itemsPerPage"
         [lazy]="true" [totalRecords]="totalRegisters"
         (onLazyLoad)="toChangePage($event)" #tableSearch>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="5">
+              Person Not Found
+            </td>
+          </tr>
+        </ng-template>
+
         <ng-template pTemplate="header">
           <tr>
             <th>Name</th>
@@ -45,7 +53,7 @@
             </td>
             <td>
               <span class="p-column-title">State</span>
-              {{ person.address.state }}
+              {{ person.address. state }}
             </td>
             <td>
               <span class="p-column-title">Status</span>
@@ -56,17 +64,10 @@
             </td>
             <td class="col-actions-content">
               <span class="p-column-title"></span>
-              <a pButton icon="pi pi-pencil" pTooltip="Update" tooltipPosition="top"></a>
+              <a pButton icon="pi pi-pencil" pTooltip="Update" tooltipPosition="top"
+                [routerLink]="['/persons', person.id]"></a>
               <button pButton icon="pi pi-trash" pTooltip="Delete" tooltipPosition="top"
                 (click)="toConfirmDeleting(person)"></button>
-            </td>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="emptymessage">
-          <tr>
-            <td colspan="5">
-              Person Not Found
             </td>
           </tr>
         </ng-template>
@@ -74,7 +75,7 @@
     </div>
 
     <div class="p-col-12">
-      <a pButton label="New Person"></a>
+      <a pButton label="New Person" routerLink="/persons/new"></a>
     </div>
   </div>
 

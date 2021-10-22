@@ -3,7 +3,7 @@
 
     <div class="p-grid">
       <div class="p-col-12">
-        <h1>New Person</h1>
+        <h1>{{ updating ? 'Update' : 'New' }} Person</h1>
       </div>
 
       <div class="p-col-12 p-fluid">
@@ -72,8 +72,9 @@
 
       <div class="p-col-12">
         <button style="margin-right: 2px;" pButton type="submit" label="Save" [disabled]="formNewPerson.invalid"></button>
-        <button style="margin-right: 2px;" pButton type="button" label="New" class="p-button-info"></button>
-        <a href="#">Back to search</a>
+        <button style="margin-right: 2px;" pButton type="button" label="New" class="p-button-info"
+          (click)="new(formNewPerson)"></button>
+        <a routerLink="/persons">Back to search</a>
       </div>
     </div>
 

@@ -109,6 +109,10 @@ export class EntriesNewComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
+  updateEditionTitle() {
+    this.title.setTitle(`Edition of entry: ${this.entry.description}`);
+  }
+
   new(form: FormControl) {
     form.reset();
 
@@ -117,10 +121,6 @@ export class EntriesNewComponent implements OnInit {
     }.bind(this), 1);
 
     this.router.navigate(['/entries/new']);
-  }
-
-  updateEditionTitle() {
-    this.title.setTitle(`Edition of entry: ${this.entry.description}`);
   }
 
 }

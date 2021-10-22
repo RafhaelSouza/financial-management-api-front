@@ -41,6 +41,14 @@ export class PersonService {
       });
   }
 
+  searchById(id: number): Promise<Person> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');
+
+    return this.http.get<Person>(`${this.personsUrl}/${id}`, { headers })
+      .toPromise();
+  }
+
   listAll(): Promise<any> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');
@@ -56,6 +64,15 @@ export class PersonService {
       .append('Content-Type', 'application/json');
 
     return this.http.post<Person>(this.personsUrl, person, { headers })
+      .toPromise();
+  }
+
+  update(person: Person): Promise<Person> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<Person>(`${this.personsUrl}/${person.id}`, person, { headers })
       .toPromise();
   }
 
