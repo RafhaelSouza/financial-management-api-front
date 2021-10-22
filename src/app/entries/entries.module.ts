@@ -2,7 +2,6 @@ import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { DropdownModule } from 'primeng/dropdown';
@@ -26,7 +25,6 @@ import { EntriesNewComponent } from './entries-new/entries-new.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
 
     InputTextModule,
     ButtonModule,

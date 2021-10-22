@@ -5,15 +5,15 @@ import { registerLocaleData } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { MessageService, ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { EntryService } from './../entries/entry.service';
 import { PersonService } from './../persons/person.service';
 import { CategoryService } from './../categories/category.service';
-
 import { ErrorHandlerService } from './error-handler.service';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundPageComponent } from './not-found-page.component';
 
@@ -41,8 +41,8 @@ registerLocaleData(localePt);
 
     ConfirmationService,
     MessageService,
-    { provide: LOCALE_ID, useValue: 'pt-BR' },
-    Title
+    Title,
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
 export class CoreModule { }

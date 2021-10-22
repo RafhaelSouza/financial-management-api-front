@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { EntriesSearchComponent } from './entries/entries-search/entries-search.component';
 import { NotFoundPageComponent } from './core/not-found-page.component';
-import { PersonsSearchComponent } from './persons/persons-search/persons-search.component';
 
 const routes: Routes = [
+  //{ path: 'entries', loadChildren: () => import('src/app/entries/entries.module').then(m => m.EntriesModule) },
+  { path: 'entries', component: EntriesSearchComponent },
+
   { path: '', redirectTo: 'entries', pathMatch: 'full' },
-  { path: 'persons', component: PersonsSearchComponent },
+
   { path: 'not-found-page', component: NotFoundPageComponent },
-  { path: '**', redirectTo: 'not-found-page' }
+  //{ path: '**', redirectTo: 'not-found-page' }
 ];
 
 @NgModule({
