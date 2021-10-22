@@ -9,6 +9,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputMaskModule } from 'primeng/inputmask';
 
+import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
 import { PersonsNewComponent } from './persons-new/persons-new.component';
 import { PersonsGridComponent } from './persons-grid/persons-grid.component';
@@ -28,7 +29,8 @@ import { PersonsGridComponent } from './persons-grid/persons-grid.component';
     TooltipModule,
     InputMaskModule,
 
-    SharedModule
+    SharedModule,
+    PersonsRoutingModule
   ],
   exports: []
 })
