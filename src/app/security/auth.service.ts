@@ -26,11 +26,16 @@ export class AuthService {
     return this.http.post(this.oauthTokenUrl, body, { headers })
       .toPromise()
       .then(response => {
-        console.log(response);
         this.storeToken(response['access_token']);
       })
       .catch(response => {
-        console.log(response);
+        if (response.status === 400) {
+          if (response.error.error === 'invalid_grant') {
+            return Promise.reject('Invalid user or password!');
+          }
+        }
+
+        return Promise.reject(response);
       });
   }
 
