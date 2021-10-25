@@ -28,7 +28,8 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
     "ng2-currency-mask": "^9.0.2",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "@auth0/angular-jwt": "^5.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.2",
