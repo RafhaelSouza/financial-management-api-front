@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from './../auth.service';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   login(user: string, password: string) {
+    this.auth.login(user, password);
   }
 
 }

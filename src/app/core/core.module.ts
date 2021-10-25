@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 
+import { AuthService } from './../security/auth.service';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { EntryService } from './../entries/entry.service';
 import { PersonService } from './../persons/person.service';
@@ -38,6 +39,7 @@ registerLocaleData(localePt);
     PersonService,
     CategoryService,
     ErrorHandlerService,
+    AuthService,
 
     ConfirmationService,
     MessageService,
