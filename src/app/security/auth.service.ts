@@ -52,4 +52,8 @@ export class AuthService {
     }
   }
 
+  hasPermission(permission: string) {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
+  }
+
 }
