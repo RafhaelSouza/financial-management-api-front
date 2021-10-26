@@ -52,6 +52,26 @@ export class AuthService {
     }
   }
 
+  getNewAccessToken(): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/x-www-form-urlencoded')
+      .append('Authorization', 'Basic ZnJvbnRlbmQ6ZnJvbnRlbmQ==');
+
+    const body = 'grant_type=refresh_token';
+
+    return this.http.post(this.oauthTokenUrl, body,
+        { headers, withCredentials: true })
+      .toPromise()
+      .then(response => {
+        this.storeToken(response['access_token']);
+
+        return Promise.resolve(null);
+      })
+      .catch(response => {
+        return Promise.resolve(null);
+      });
+  }
+
   hasPermission(permission: string) {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
   }
