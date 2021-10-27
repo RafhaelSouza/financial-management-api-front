@@ -19,6 +19,10 @@ export class ErrorHandlerService {
         && errorResponse.status >= 400 && errorResponse.status <= 499) {
       msg = 'There was an error processing your request.';
 
+      if (errorResponse.status === 403) {
+        msg = 'You are not allowed to do this action.';
+      }
+
       try {
         msg = errorResponse.error[0].user_message;
       } catch (e) { }

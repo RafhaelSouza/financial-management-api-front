@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { LazyLoadEvent, MessageService, ConfirmationService} from 'primeng/api';
 import { Table } from 'primeng/table';
 
+import { AuthService } from './../../security/auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { EntryService, EntryFilter } from './../entry.service';
 
@@ -20,6 +21,7 @@ export class EntriesSearchComponent implements OnInit {
   @ViewChild('tableSearch') grid: Table;
 
   constructor(
+    public auth: AuthService,
     private title: Title,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
