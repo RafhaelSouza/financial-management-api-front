@@ -72,6 +72,12 @@ export class AuthService {
       });
   }
 
+  isInvalidAccessToken() {
+    const token = localStorage.getItem('token');
+
+    return !token || this.jwtHelper.isTokenExpired(token);
+  }
+
   hasPermission(permission: string) {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
   }
