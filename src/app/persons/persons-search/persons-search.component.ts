@@ -3,9 +3,10 @@ import { Title } from '@angular/platform-browser';
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
+import { AuthService } from './../../security/auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
-
 import { PersonFilter, PersonService } from './../person.service';
+
 @Component({
   selector: 'app-persons-search',
   templateUrl: './persons-search.component.html',
@@ -19,6 +20,7 @@ export class PersonsSearchComponent {
   @ViewChild('tabela') grid: Table;
 
   constructor(
+    public auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,
     private messageService: MessageService,

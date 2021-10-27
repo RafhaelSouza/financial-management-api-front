@@ -17,11 +17,16 @@ import { ErrorHandlerService } from './error-handler.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundPageComponent } from './not-found-page.component';
+import { NotAuthorizedPageComponent } from './not-authorized-page.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
-  declarations: [NavbarComponent, NotFoundPageComponent],
+  declarations: [
+    NavbarComponent,
+    NotFoundPageComponent,
+    NotAuthorizedPageComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,

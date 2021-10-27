@@ -67,7 +67,8 @@
               <a pButton icon="pi pi-pencil" pTooltip="Update" tooltipPosition="top"
                 [routerLink]="['/persons', person.id]"></a>
               <button pButton icon="pi pi-trash" pTooltip="Delete" tooltipPosition="top"
-                (click)="toConfirmDeleting(person)"></button>
+                (click)="toConfirmDeleting(person)"
+                [disabled]="!auth.hasPermission('ROLE_DELETE_PERSON')"></button>
             </td>
           </tr>
         </ng-template>

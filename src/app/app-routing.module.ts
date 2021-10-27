@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { NotAuthorizedPageComponent } from './core/not-authorized-page.component';
 import { NotFoundPageComponent } from './core/not-found-page.component';
 
 const routes: Routes = [
@@ -9,7 +10,9 @@ const routes: Routes = [
 
   { path: '', redirectTo: 'entries', pathMatch: 'full' },
 
-  { path: 'not-found-page', component: NotFoundPageComponent },
+  { path: 'not-authorized', component: NotAuthorizedPageComponent },
+
+  { path: 'not-found', component: NotFoundPageComponent },
   //{ path: '**', redirectTo: 'not-found-page' }
 ];
 

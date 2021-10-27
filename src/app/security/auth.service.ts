@@ -82,4 +82,14 @@ export class AuthService {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
   }
 
+  hasAnyPermission(roles) {
+    for (const role of roles) {
+      if (this.hasPermission(role)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
 }
