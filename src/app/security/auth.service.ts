@@ -92,4 +92,9 @@ export class AuthService {
     return false;
   }
 
+  cleanAccessToken() {
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
+  }
+
 }

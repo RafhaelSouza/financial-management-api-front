@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 
 import { AuthGuard } from './auth.guard';
+import { LogoutService } from './logout.service';
 import { SecurityRoutingModule } from './security-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ApiHttpInterceptor } from './api-http-interceptor';
@@ -43,7 +44,8 @@ export function tokenGetter(): string {
       useClass: ApiHttpInterceptor,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    LogoutService
   ]
 })
 export class SecurityModule { }
