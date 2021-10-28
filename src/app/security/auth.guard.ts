@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
@@ -18,7 +18,20 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    if (next.data.roles && !this.auth.hasAnyPermission(next.data.roles)) {
+    if (this.auth.isInvalidAccessToken) {
+
+      return this.auth.getNewAccessToken()
+        .then(() => {
+          if (this.auth.isInvalidAccessToken()) {
+            this.router.navigate(['/login']);
+            return false;
+          }
+
+          return true;
+        });
+    }
+
+    else if (next.data.roles && !this.auth.hasAnyPermission(next.data.roles)) {
       this.router.navigate(['/not-authorized']);
       return false;
     }
