@@ -23,7 +23,7 @@ export class AuthService {
 
     const body = `username=${user}&password=${password}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenUrl, body, { headers })
+    return this.http.post(this.oauthTokenUrl, body, { headers, withCredentials: true })
       .toPromise()
       .then(response => {
         this.storeToken(response['access_token']);
@@ -55,7 +55,7 @@ export class AuthService {
   getNewAccessToken(): Promise<void> {
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/x-www-form-urlencoded')
-      .append('Authorization', 'Basic ZnJvbnRlbmQ6ZnJvbnRlbmQ==');
+      .append('Authorization', 'Basic ZnJvbnRlbmQ6ZnJvbnRlbmQ=');
 
     const body = 'grant_type=refresh_token';
 

@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'not-authorized', component: NotAuthorizedPageComponent },
 
   { path: 'not-found', component: NotFoundPageComponent },
-  //{ path: '**', redirectTo: 'not-found-page' }
+  /*{ path: '**', redirectTo: 'not-found-page' }*/
 ];
 
 @NgModule({
