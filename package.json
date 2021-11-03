@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -29,9 +30,7 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
     "ng2-currency-mask": "^9.0.2",
-    "moment": "^2.29.1"
-  },
-  "devDependencies": {
+    "moment": "^2.29.1",
     "@angular-devkit/build-angular": "~0.1001.2",
     "@angular/cli": "~10.1.2",
     "@angular/compiler-cli": "~10.1.2",
@@ -52,5 +51,10 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "12.11.1",
+    "npm": "6.11.3"
   }
 }
