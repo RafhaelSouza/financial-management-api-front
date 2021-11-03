@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -5,9 +6,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class CategoryService {
 
-  categoriesUrl = 'http://localhost:8080/categories';
+  categoriesUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.categoriesUrl = `${environment.apiUrl}/categories`;
+  }
 
   listAll(): Promise<any> {
     const headers = new HttpHeaders()

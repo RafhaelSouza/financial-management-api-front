@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
@@ -16,9 +17,11 @@ export class EntryFilter {
 @Injectable()
 export class EntryService {
 
-  entriesUrl = 'http://localhost:8080/entries';
+  entriesUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.entriesUrl = `${environment.apiUrl}/entries`;
+  }
 
   search(filter: EntryFilter): Promise<any> {
     const headers = new HttpHeaders()
