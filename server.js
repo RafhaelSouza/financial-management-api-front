@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static(__dirname + '/dist/financial-management-api-ui'));
+app.use(express.static(__dirname + '/dist/financial-management-api-front'));
 
 app.get('/*', function(req, res) {
-  res.sendFile(__dirname + '/dist/financial-management-api-ui/index.html');
+  res.sendFile(__dirname + '/dist/financial-management-api-front/index.html');
 });
 
 app.listen(process.env.PORT || 4200);
