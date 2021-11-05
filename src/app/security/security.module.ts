@@ -30,8 +30,8 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['localhost:8080'],
-        disallowedRoutes: ['http://localhost:8080/oauth/token']
+        allowedDomains: ['financial-management-api-r.herokuapp.com'],
+        disallowedRoutes: ['https://financial-management-api-r.herokuapp.com/oauth/token']
       }
     }),
 
