@@ -7,19 +7,19 @@ import { PersonsNewComponent } from './persons-new/persons-new.component';
 
 const routes: Routes = [
   {
-    path: 'persons',
+    path: '',
     component: PersonsSearchComponent ,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SEARCH_PERSON'] }
   },
   {
-    path: 'persons/new',
+    path: 'new',
     component: PersonsNewComponent ,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_PERSON'] }
   },
   {
-    path: 'persons/:id',
+    path: ':id',
     component: PersonsNewComponent ,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_ENTRY'] }

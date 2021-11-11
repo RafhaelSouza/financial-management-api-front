@@ -7,19 +7,19 @@ import { EntriesSearchComponent } from './entries-search/entries-search.componen
 
 const routes: Routes = [
   {
-    path: 'entries',
+    path: '',
     component: EntriesSearchComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SEARCH_ENTRY'] }
   },
   {
-    path: 'entries/new',
+    path: 'new',
     component: EntriesNewComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_ENTRY'] }
   },
   {
-    path: 'entries/:id',
+    path: ':id',
     component: EntriesNewComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_ENTRY'] }

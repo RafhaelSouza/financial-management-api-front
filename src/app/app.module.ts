@@ -7,8 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SecurityModule } from './security/security.module';
-import { PersonsModule } from './persons/persons.module';
-import { EntriesModule } from './entries/entries.module';
 
 @NgModule({
   declarations: [
@@ -21,9 +19,7 @@ import { EntriesModule } from './entries/entries.module';
 
     AppRoutingModule,
     CoreModule,
-    SecurityModule,
-    EntriesModule,
-    PersonsModule
+    SecurityModule
   ],
   providers: [],
   bootstrap: [AppComponent]

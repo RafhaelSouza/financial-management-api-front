@@ -5,8 +5,9 @@ import { NotAuthorizedPageComponent } from './core/not-authorized-page.component
 import { NotFoundPageComponent } from './core/not-found-page.component';
 
 const routes: Routes = [
-  //{ path: 'entries', loadChildren: () => import('src/app/entries/entries.module').then(m => m.EntriesModule) },
-  //{ path: 'entries', component: EntriesSearchComponent },
+  { path: 'entries', loadChildren: () => import('app/entries/entries.module').then(m => m.EntriesModule) },
+
+  { path: 'persons', loadChildren: () => import('app/persons/persons.module').then(m => m.PersonsModule) },
 
   { path: '', redirectTo: 'entries', pathMatch: 'full' },
 
