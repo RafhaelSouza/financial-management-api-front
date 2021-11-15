@@ -1,5 +1,5 @@
 <div class="container">
-  <form #formNewEntry="ngForm" (ngSubmit)="save(formNewEntry)" autocomplete="off">
+  <form [formGroup]="entryForm" (ngSubmit)="save()" autocomplete="off">
 
     <div class="p-grid">
       <div class="p-col-12">
@@ -7,64 +7,80 @@
       </div>
 
       <div class="p-col-12">
-        <p-selectButton [options]="entry_types" [(ngModel)]="entry.entry_type" name="entry_type" #entry_type>
+        <p-selectButton [options]="entry_types"
+          name="entry_type"
+          formControlName="entry_type">
         </p-selectButton>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">
         <label>Due</label>
-        <p-calendar [(ngModel)]="entry.due_date" #due_date="ngModel" name="due_date" required
-          dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true">
+        <p-calendar name="due_date"
+          dateFormat="dd/mm/yy"
+          [inline]="false"
+          [readonlyInput]="false"
+          [showIcon]="true"
+          formControlName="due_date">
         </p-calendar>
-        <app-message [control]="due_date" error="required"
+        <app-message [control]="entryForm.get('due_date')" error="required"
           text="Type a due date"></app-message>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">
-        <label>{{ entry_type.value === 'EARNING' ? 'Receivement' : 'Payment' }}</label>
-        <p-calendar [(ngModel)]="entry.payment_date" name="payment_date"
-          dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true">
+        <label>{{ entryForm.get('entry_type').value === 'EARNING' ? 'Receivement' : 'Payment' }}</label>
+        <p-calendar name="payment_date"
+          dateFormat="dd/mm/yy"
+          [inline]="false"
+          [readonlyInput]="false"
+          [showIcon]="true"
+          formControlName="payment_date">
         </p-calendar>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Description</label>
-        <input [(ngModel)]="entry.description" pInputText ngModel #description="ngModel"
-          type="text" name="description" required minlength="5">
-        <app-message [control]="description" error="required" text="Type a description"></app-message>
-        <app-message [control]="description" error="minlength"
-          text="Type at least {{ description.errors?.minlength?.requiredLength }} characters"></app-message>
+        <input pInputText
+          type="text"
+          name="description"
+          formControlName="description">
+        <app-message [control]="entryForm.get('description')" error="required" text="Type a description"></app-message>
+        <app-message [control]="entryForm.get('description')" error="minlength"
+          text="Type at least {{ entryForm.get('description').errors?.minlength?.requiredLength }} characters"></app-message>
       </div>
 
       <div class="p-col-12 p-md-3 p-fluid">
         <label>Price</label>
-        <input [(ngModel)]="entry.price" pInputText ngModel currencyMask
+        <input pInputText currencyMask
           [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
-          type="text" placeholder="0,00" name="price">
+          type="text" placeholder="0,00" name="price"
+          formControlName="price">
       </div>
 
-      <div class="p-col-12 p-md-6 p-fluid">
+      <div class="p-col-12 p-md-6 p-fluid" formGroupName="category">
         <label>Category</label>
-        <p-dropdown [(ngModel)]="entry.category.id" name="category"
-          [options]="categories" placeholder="Choose one" #category>
+        <p-dropdown name="category"
+          [options]="categories"
+          placeholder="Choose one"
+          formControlName="id">
         </p-dropdown>
       </div>
 
-      <div class="p-col-12 p-md-6 p-fluid">
+      <div class="p-col-12 p-md-6 p-fluid" formGroupName="person">
         <label>Person</label>
-        <p-dropdown [(ngModel)]="entry.person.id" name="person"
-          [options]="persons" placeholder="Choose one" [filter]="true" #person>
+        <p-dropdown name="person"
+          [options]="persons" placeholder="Choose one" [filter]="true"
+          formControlName="id">
         </p-dropdown>
       </div>
 
       <div class="p-col-12 p-fluid">
         <label>Observation</label>
-        <textarea [(ngModel)]="entry.observation" name="observation" pInputTextarea rows="3"></textarea>
+        <textarea name="observation" pInputTextarea rows="3" formControlName="observation"></textarea>
       </div>
 
       <div class="p-col-12">
-        <button style="margin-right: 2px;" pButton type="submit" label="Save"></button>
-        <button style="margin-right: 2px;" (click)="new(formNewEntry)" pButton
+        <button style="margin-right: 2px;" pButton type="submit" label="Save" [disabled]="entryForm.invalid"></button>
+        <button style="margin-right: 2px;" (click)="new()" pButton
           type="button" label="New" class="p-button-info"></button>
         <a routerLink="/entries">Back to search</a>
       </div>

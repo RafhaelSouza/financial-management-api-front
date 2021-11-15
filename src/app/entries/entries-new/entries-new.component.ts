@@ -1,4 +1,4 @@
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -25,7 +25,7 @@ export class EntriesNewComponent implements OnInit {
 
   categories = [];
   persons = [];
-  entry = new Entry();
+  entryForm: FormGroup;
 
   constructor(
     private title: Title,
@@ -35,10 +35,13 @@ export class EntriesNewComponent implements OnInit {
     private messageService: MessageService,
     private categoryService:CategoryService,
     private personService:PersonService,
-    private entryService:EntryService
+    private entryService:EntryService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.setForm();
+
     this.title.setTitle('New Entry');
 
     this.loadCategories();
@@ -51,14 +54,34 @@ export class EntriesNewComponent implements OnInit {
     }
   }
 
+  setForm() {
+    this.entryForm = this.formBuilder.group({
+      id: [],
+      entry_type: [ 'EXPENSE', Validators.required ],
+      due_date: [ null, Validators.required ],
+      payment_date: [],
+      description: [null, [ Validators.required, Validators.minLength(5) ]],
+      price: [ null, Validators.required ],
+      person: this.formBuilder.group({
+        id: [ null, Validators.required ],
+        name: []
+      }),
+      category: this.formBuilder.group({
+        id: [ null, Validators.required ],
+        name: []
+      }),
+      observation: []
+    });
+  }
+
   get updating() {
-    return Boolean(this.entry.id)
+    return Boolean(this.entryForm.get('id').value)
   }
 
   loadEntry(id: number) {
     this.entryService.searchById(id)
       .then(entry => {
-        this.entry = entry;
+        this.entryForm.patchValue(entry);
         this.updateEditionTitle();
       })
       .catch(erro => this.errorHandler.handle(erro));
@@ -80,16 +103,16 @@ export class EntriesNewComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  save(form: FormControl) {
+  save() {
     if (this.updating) {
-      this.updateEntry(form);
+      this.updateEntry();
     } else {
-      this.insertEntry(form);
+      this.insertEntry();
     }
   }
 
-  insertEntry(form: FormControl) {
-    this.entryService.save(this.entry)
+  insertEntry() {
+    this.entryService.save(this.entryForm.value)
       .then(savedEntry => {
         this.messageService.add({ severity: 'success', detail: 'Entry saved successful!' });
 
@@ -98,10 +121,10 @@ export class EntriesNewComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  updateEntry(form: FormControl) {
-    this.entryService.update(this.entry)
+  updateEntry() {
+    this.entryService.update(this.entryForm.value)
       .then(entry => {
-        this.entry = entry;
+        this.entryForm.patchValue(entry);
 
         this.messageService.add({ severity: 'success', detail: 'Entry updated successful!' });
         this.updateEditionTitle();
@@ -110,11 +133,11 @@ export class EntriesNewComponent implements OnInit {
   }
 
   updateEditionTitle() {
-    this.title.setTitle(`Edition of entry: ${this.entry.description}`);
+    this.title.setTitle(`Edition of entry: ${this.entryForm.get('description').value}`);
   }
 
-  new(form: FormControl) {
-    form.reset();
+  new() {
+    this.entryForm.reset();
 
     setTimeout(function() {
       this.entry = new Entry();
