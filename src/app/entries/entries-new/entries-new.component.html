@@ -43,9 +43,9 @@
           type="text"
           name="description"
           formControlName="description">
-        <app-message [control]="entryForm.get('description')" error="required" text="Type a description"></app-message>
-        <app-message [control]="entryForm.get('description')" error="minlength"
-          text="Type at least {{ entryForm.get('description').errors?.minlength?.requiredLength }} characters"></app-message>
+        <app-message [control]="entryForm.get('description')" error="customRequired" text="Type a description"></app-message>
+        <app-message [control]="entryForm.get('description')" error="minSizeCustom"
+          text="Type at least {{ entryForm.get('description').errors?.minSizeCustom?.sizeCustom }} characters"></app-message>
       </div>
 
       <div class="p-col-12 p-md-3 p-fluid">

@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -60,7 +60,7 @@ export class EntriesNewComponent implements OnInit {
       entry_type: [ 'EXPENSE', Validators.required ],
       due_date: [ null, Validators.required ],
       payment_date: [],
-      description: [null, [ Validators.required, Validators.minLength(5) ]],
+      description: [null, [ this.requiredCustomValidator, this.minSizeCustomValidator(5) ]],
       price: [ null, Validators.required ],
       person: this.formBuilder.group({
         id: [ null, Validators.required ],
@@ -72,6 +72,17 @@ export class EntriesNewComponent implements OnInit {
       }),
       observation: []
     });
+  }
+
+  requiredCustomValidator(input: FormControl) {
+    //let dueDt = input.root.get('due_date').value;
+    return (input.value ? null : { customRequired: true });
+  }
+
+  minSizeCustomValidator(value: number) {
+    return (input: FormControl) => {
+      return (!input.value || input.value.length >= value) ? null : { minSizeCustom: { sizeCustom: value } };
+    };
   }
 
   get updating() {
