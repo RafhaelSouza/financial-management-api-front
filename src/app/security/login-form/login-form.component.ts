@@ -20,7 +20,7 @@ export class LoginFormComponent {
   login(user: string, password: string) {
     this.auth.login(user, password)
       .then(() => {
-        this.router.navigate(['/entries']);
+        this.router.navigate(['/dashboard']);
       })
       .catch(erro => {
         this.errorHandler.handle(erro);

@@ -9,6 +9,8 @@ const routes: Routes = [
 
   { path: 'persons', loadChildren: () => import('app/persons/persons.module').then(m => m.PersonsModule) },
 
+  { path: 'dashboard', loadChildren: () => import('app/dashboard/dashboard.module').then(m => m.DashboardModule) },
+
   { path: '', redirectTo: 'entries', pathMatch: 'full' },
 
   { path: 'not-authorized', component: NotAuthorizedPageComponent },
