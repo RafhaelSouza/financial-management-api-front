@@ -13,6 +13,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { EntryService } from './../entries/entry.service';
 import { PersonService } from './../persons/person.service';
 import { CategoryService } from './../categories/category.service';
+import { DashboardService } from './../dashboard/dashboard.service';
 import { ErrorHandlerService } from './error-handler.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -43,6 +44,7 @@ registerLocaleData(localePt);
     EntryService,
     PersonService,
     CategoryService,
+    DashboardService,
     ErrorHandlerService,
     AuthService,
 
