@@ -10,24 +10,12 @@ import { DashboardService } from './../dashboard.service';
 export class DashboardComponent implements OnInit {
 
   pieChartData: any;
-  lineChartData = {
-    labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    datasets: [
-      {
-        label: 'Earnings',
-        data: [4, 10, 18, 5, 1, 20, 3],
-        borderColor: '#3366CC'
-      }, {
-        label: 'Expenses',
-        data: [10, 15, 8, 5, 1, 7, 9],
-        borderColor: '#D62B00'
-      }
-    ]
-  };
+  lineChartData: any;
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.setPieChart();
+    this.setLineChart();
   }
 
   setPieChart() {
@@ -43,6 +31,67 @@ export class DashboardComponent implements OnInit {
           ]
         };
       });
+  }
+
+  setLineChart() {
+    this.dashboardService.entriesByDay()
+      .then(datas => {
+        const days_of_month = this.setDaysOfMonth();
+        const total_earnings = this.totalByEachDayOfMonth(
+          datas.filter(data => data.entry_type === 'EARNING'), days_of_month);
+        const total_expenses = this.totalByEachDayOfMonth(
+          datas.filter(data => data.entry_type === 'EXPENSE'), days_of_month);
+
+        this.lineChartData = {
+          labels: days_of_month,
+          datasets: [
+            {
+              label: 'Earnings',
+              data: total_earnings,
+              borderColor: '#3366CC'
+            }, {
+              label: 'Expenses',
+              data: total_expenses,
+              borderColor: '#D62B00'
+            }
+          ]
+        }
+      });
+  }
+
+  private totalByEachDayOfMonth(datas, days_of_month) {
+    const totals: number[] = [];
+    for (const day of days_of_month) {
+      let total = 0;
+
+      for (const data of datas) {
+        if (data.day.getDate() === day) {
+          total = data.total;
+
+          break;
+        }
+      }
+
+      totals.push(total);
+    }
+
+    return totals;
+  }
+
+  private setDaysOfMonth() {
+    const reference_month = new Date();
+    reference_month.setMonth(reference_month.getMonth() + 1); // go to next month
+    reference_month.setDate(0); // return to the last day of the month we want to
+
+    const amount = reference_month.getDate();
+
+    const days: number[] = [];
+
+    for (let i = 1; i <= amount; i++) {
+      days.push(i);
+    }
+
+    return days;
   }
 
 }
