@@ -11,6 +11,8 @@ const routes: Routes = [
 
   { path: 'dashboard', loadChildren: () => import('app/dashboard/dashboard.module').then(m => m.DashboardModule) },
 
+  { path: 'reports', loadChildren: () => import('app/reports/reports.module').then(m => m.ReportsModule) },
+
   { path: '', redirectTo: 'entries', pathMatch: 'full' },
 
   { path: 'not-authorized', component: NotAuthorizedPageComponent },
