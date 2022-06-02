@@ -14,6 +14,7 @@ import { EntryService } from './../entries/entry.service';
 import { PersonService } from './../persons/person.service';
 import { CategoryService } from './../categories/category.service';
 import { DashboardService } from './../dashboard/dashboard.service';
+import { ReportsService } from 'app/reports/reports.service';
 import { ErrorHandlerService } from './error-handler.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -45,6 +46,7 @@ registerLocaleData(localePt);
     PersonService,
     CategoryService,
     DashboardService,
+    ReportsService,
     ErrorHandlerService,
     AuthService,
 
