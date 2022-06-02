@@ -1,1 +1,27 @@
-<p>reports-entry works!</p>
+<div class="container">
+  <div class="p-grid">
+    <div class="p-col-12">
+      <h1>Entry report by person</h1>
+    </div>
+
+    <form #formReport="ngForm" (ngSubmit)="generate()">
+      <div class="p-col-12">
+        <label>Due Date&nbsp;</label>
+        <p-calendar dateFormat="dd/mm/yy" required
+          [inputStyle]="{ 'width': '105px'}"
+          [(ngModel)]="start_date" name="start_date"></p-calendar>
+
+        <label>&nbsp;to&nbsp;</label>
+
+        <p-calendar dateFormat="dd/mm/yy" required
+          [inputStyle]="{ 'width': '105px'}"
+          [(ngModel)]="end_date" name="end_date"></p-calendar>
+      </div>
+
+      <div class="p-col-12">
+        <button pButton type="submit" label="Generate"
+          [disabled]="formReport.invalid"></button>
+      </div>
+    </form>
+  </div>
+</div>

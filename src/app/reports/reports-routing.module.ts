@@ -6,7 +6,7 @@ import { AuthGuard } from './../security/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'entries',
     component: ReportsEntryComponent,
     canActivate: [ AuthGuard ],
     data: { roles: ['ROLE_SEARCH_ENTRY'] }

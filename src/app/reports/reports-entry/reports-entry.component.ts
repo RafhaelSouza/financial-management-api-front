@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportsEntryComponent implements OnInit {
 
+  start_date: Date;
+  end_date: Date;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  generate() {
+    console.log(this.start_date);
+    console.log(this.end_date);
   }
 
 }
