@@ -17,6 +17,7 @@ import { Person } from './../../core/model';
 export class PersonsNewComponent implements OnInit {
 
   person = new Person();
+  displayContactForm = false;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -35,6 +36,10 @@ export class PersonsNewComponent implements OnInit {
     if (personId) {
       this.loadPerson(personId);
     }
+  }
+
+  setNewContact() {
+    this.displayContactForm = true;
   }
 
   get updating() {

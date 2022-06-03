@@ -74,6 +74,10 @@
         <p-panel header="Contacts">
           <div class="p-grid">
             <div class="p-col-12">
+              <button pButton label="New" icon="pi pi-plus" type="button"
+                class="ui-button-secondary" (click)="setNewContact()"></button>
+            </div>
+            <div class="p-col-12">
               <p-table [value]="person.contacts" [responsive]="true">
                 <ng-template pTemplate="header">
                   <tr>
@@ -123,3 +127,6 @@
   </form>
 
 </div>
+
+<p-dialog header="New Contact" [(visible)]="displayContactForm"
+  modal="modal"></p-dialog>
