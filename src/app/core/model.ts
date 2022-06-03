@@ -7,11 +7,20 @@ export class Address {
   city: string;
   state: string;
 }
+
+export class Contact {
+  id: number;
+  name: string;
+  email: string;
+  telephone: string;
+}
+
 export class Person {
   id: number;
   name: string;
   address = new Address();
   active = true;
+  contacts = new Array<Contact>();
 }
 
 export class Category {
