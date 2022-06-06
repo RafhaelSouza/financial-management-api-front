@@ -44,6 +44,18 @@ export class PersonsNewComponent implements OnInit {
     this.contact = new Contact();
   }
 
+  saveContact(form: FormControl) {
+    this.person.contacts.push(this.contactClone(this.contact));
+
+    this.displayContactForm = false;
+
+    form.reset();
+  }
+
+  contactClone(contact: Contact): Contact {
+    return new Contact(contact.id, contact.name, contact.email, contact.telephone);
+  }
+
   get updating() {
     return Boolean(this.person.id)
   }
