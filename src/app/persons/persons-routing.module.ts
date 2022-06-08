@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AuthGuard } from './../security/auth.guard';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
-import { PersonsNewComponent } from './persons-new/persons-new.component';
+import { PersonsFormComponent } from './persons-form/persons-form.component';
 
 const routes: Routes = [
   {
@@ -14,13 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    component: PersonsNewComponent ,
+    component: PersonsFormComponent ,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_PERSON'] }
   },
   {
     path: ':id',
-    component: PersonsNewComponent ,
+    component: PersonsFormComponent ,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_ENTRY'] }
   }

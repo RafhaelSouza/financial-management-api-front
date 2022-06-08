@@ -13,14 +13,14 @@ import { DialogModule } from 'primeng/dialog';
 
 import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
-import { PersonsNewComponent } from './persons-new/persons-new.component';
+import { PersonsFormComponent } from './persons-form/persons-form.component';
 import { PersonsGridComponent } from './persons-grid/persons-grid.component';
 import { PersonsFormContactComponent } from './persons-form-contact/persons-form-contact.component';
 
 @NgModule({
   declarations: [
     PersonsSearchComponent,
-    PersonsNewComponent,
+    PersonsFormComponent,
     PersonsGridComponent,
     PersonsFormContactComponent
   ],

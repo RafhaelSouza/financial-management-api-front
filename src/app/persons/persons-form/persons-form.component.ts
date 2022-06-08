@@ -5,16 +5,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { MessageService } from 'primeng/api';
 
-import { ErrorHandlerService } from './../../core/error-handler.service';
+import { ErrorHandlerService } from '../../core/error-handler.service';
 import { PersonService } from '../person.service';
-import { Person } from './../../core/model';
+import { Person } from '../../core/model';
 
 @Component({
-  selector: 'app-persons-new',
-  templateUrl: './persons-new.component.html',
-  styleUrls: ['./persons-new.component.css']
+  selector: 'app-persons-form',
+  templateUrl: './persons-form.component.html',
+  styleUrls: ['./persons-form.component.css']
 })
-export class PersonsNewComponent implements OnInit {
+export class PersonsFormComponent implements OnInit {
 
   person = new Person();
 
