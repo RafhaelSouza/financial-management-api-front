@@ -88,14 +88,15 @@
                   </tr>
                 </ng-template>
 
-                <ng-template pTemplate="body" let-contact>
+                <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">
                   <tr>
                     <td>{{ contact.name }}</td>
                     <td>{{ contact.email }}</td>
                     <td>{{ contact.telephone }}</td>
                     <td class="col-actions-content">
                       <button pButton icon="pi pi-pencil" type="button"
-                        pTooltip="Update" tooltipPosition="top"></button>
+                        pTooltip="Update" tooltipPosition="top"
+                        (click)="setUpdateContact(contact, rowIndex)"></button>
 
                       <button pButton icon="pi pi-trash" type="button"
                         pTooltip="Delete" tooltipPosition="top"></button>

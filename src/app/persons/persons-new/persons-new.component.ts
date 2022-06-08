@@ -19,6 +19,7 @@ export class PersonsNewComponent implements OnInit {
   person = new Person();
   displayContactForm = false;
   contact: Contact;
+  contactIndex: number;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -42,13 +43,18 @@ export class PersonsNewComponent implements OnInit {
   setNewContact() {
     this.displayContactForm = true;
     this.contact = new Contact();
+    this.contactIndex = this.person.contacts.length;
+  }
+
+  setUpdateContact(contact: Contact, index: number) {
+    this.contact = this.contactClone(contact);
+    this.displayContactForm = true;
+    this.contactIndex = index;
   }
 
   saveContact(form: FormControl) {
-    this.person.contacts.push(this.contactClone(this.contact));
-
+    this.person.contacts[this.contactIndex] = this.contactClone(this.contact);
     this.displayContactForm = false;
-
     form.reset();
   }
 

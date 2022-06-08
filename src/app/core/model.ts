@@ -21,7 +21,6 @@ export class Contact {
     this.telephone = telephone;
   }
 }
-
 export class Person {
   id: number;
   name: string;
@@ -29,11 +28,9 @@ export class Person {
   active = true;
   contacts = new Array<Contact>();
 }
-
 export class Category {
   id: number;
 }
-
 export class Entry {
   id: number;
   entry_type = 'EXPENSE';
