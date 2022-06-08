@@ -58,6 +58,10 @@ export class PersonsNewComponent implements OnInit {
     form.reset();
   }
 
+  deleteContact(index: number) {
+    this.person.contacts.splice(index, 1);
+  }
+
   contactClone(contact: Contact): Contact {
     return new Contact(contact.id, contact.name, contact.email, contact.telephone);
   }
