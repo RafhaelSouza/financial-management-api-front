@@ -7,7 +7,7 @@ import { MessageService } from 'primeng/api';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PersonService } from '../person.service';
-import { Person, Contact } from './../../core/model';
+import { Person } from './../../core/model';
 
 @Component({
   selector: 'app-persons-new',
@@ -17,9 +17,6 @@ import { Person, Contact } from './../../core/model';
 export class PersonsNewComponent implements OnInit {
 
   person = new Person();
-  displayContactForm = false;
-  contact: Contact;
-  contactIndex: number;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -38,32 +35,6 @@ export class PersonsNewComponent implements OnInit {
     if (personId) {
       this.loadPerson(personId);
     }
-  }
-
-  setNewContact() {
-    this.displayContactForm = true;
-    this.contact = new Contact();
-    this.contactIndex = this.person.contacts.length;
-  }
-
-  setUpdateContact(contact: Contact, index: number) {
-    this.contact = this.contactClone(contact);
-    this.displayContactForm = true;
-    this.contactIndex = index;
-  }
-
-  saveContact(form: FormControl) {
-    this.person.contacts[this.contactIndex] = this.contactClone(this.contact);
-    this.displayContactForm = false;
-    form.reset();
-  }
-
-  deleteContact(index: number) {
-    this.person.contacts.splice(index, 1);
-  }
-
-  contactClone(contact: Contact): Contact {
-    return new Contact(contact.id, contact.name, contact.email, contact.telephone);
   }
 
   get updating() {
