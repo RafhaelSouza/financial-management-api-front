@@ -15,12 +15,12 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { EntriesRoutingModule } from './entries-routing.module';
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
-import { EntriesNewComponent } from './entries-new/entries-new.component';
+import { EntriesFormComponent } from './entries-form/entries-form.component';
 
 @NgModule({
   declarations: [
     EntriesSearchComponent,
-    EntriesNewComponent
+    EntriesFormComponent
   ],
   imports: [
     CommonModule,

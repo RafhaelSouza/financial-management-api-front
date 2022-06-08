@@ -5,18 +5,18 @@ import { Title } from '@angular/platform-browser';
 
 import { MessageService } from 'primeng/api';
 
-import { ErrorHandlerService } from './../../core/error-handler.service';
-import { PersonService } from './../../persons/person.service';
-import { CategoryService } from './../../categories/category.service';
-import { Entry } from './../../core/model';
+import { ErrorHandlerService } from '../../core/error-handler.service';
+import { PersonService } from '../../persons/person.service';
+import { CategoryService } from '../../categories/category.service';
+import { Entry } from '../../core/model';
 import { EntryService } from '../entry.service';
 
 @Component({
-  selector: 'app-entries-new',
-  templateUrl: './entries-new.component.html',
-  styleUrls: ['./entries-new.component.css']
+  selector: 'app-entries-form',
+  templateUrl: './entries-form.component.html',
+  styleUrls: ['./entries-form.component.css']
 })
-export class EntriesNewComponent implements OnInit {
+export class EntriesFormComponent implements OnInit {
 
   entry_types = [
     { label: 'Earning', value: 'EARNING' },

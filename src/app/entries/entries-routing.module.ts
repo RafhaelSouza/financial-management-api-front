@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard } from './../security/auth.guard';
-import { EntriesNewComponent } from './entries-new/entries-new.component';
+import { EntriesFormComponent } from './entries-form/entries-form.component';
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
 
 const routes: Routes = [
@@ -14,13 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    component: EntriesNewComponent,
+    component: EntriesFormComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_ENTRY'] }
   },
   {
     path: ':id',
-    component: EntriesNewComponent,
+    component: EntriesFormComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SAVE_ENTRY'] }
   }
