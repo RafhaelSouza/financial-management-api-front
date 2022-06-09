@@ -23,6 +23,10 @@ export class EntryService {
     this.entriesUrl = `${environment.apiUrl}/entries`;
   }
 
+  attachUploadUrl(): string {
+    return `${this.entriesUrl}/attachment`;
+  }
+
   search(filter: EntryFilter): Promise<any> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==');

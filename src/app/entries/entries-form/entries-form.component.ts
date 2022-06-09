@@ -33,9 +33,9 @@ export class EntriesFormComponent implements OnInit {
     private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
-    private categoryService:CategoryService,
-    private personService:PersonService,
-    private entryService:EntryService,
+    private categoryService: CategoryService,
+    private personService: PersonService,
+    private entryService: EntryService,
     private formBuilder: FormBuilder
   ) { }
 
@@ -52,6 +52,10 @@ export class EntriesFormComponent implements OnInit {
     if (entryId) {
       this.loadEntry(entryId);
     }
+  }
+
+  get attachUploadUrl() {
+    return this.entryService.attachUploadUrl();
   }
 
   setForm() {

@@ -78,6 +78,12 @@
         <textarea name="observation" pInputTextarea rows="3" formControlName="observation"></textarea>
       </div>
 
+      <div style="margin-left: 90%;" class="p-col-6 p-col-offset-6 p-md-2 p-md-offset-10 p-fluid">
+        <p-fileUpload name="attachment" mode="basic" auto="true" maxFileSize="100000000"
+          chooseLabel="Attach" accept="image/*,application/*"
+          [url]="attachUploadUrl"></p-fileUpload>
+      </div>
+
       <div class="p-col-12">
         <button style="margin-right: 2px;" pButton type="submit" label="Save" [disabled]="entryForm.invalid"></button>
         <button style="margin-right: 2px;" (click)="new()" pButton
