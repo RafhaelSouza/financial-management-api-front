@@ -83,7 +83,8 @@
         <p-fileUpload name="attachment" mode="basic" auto="true" maxFileSize="100000000"
           chooseLabel="Attach" accept="image/*,application/*"
           [url]="attachUploadUrl"
-          (onUpload)="finishAttachUpload($event)"></p-fileUpload>
+          (onUpload)="finishAttachUpload($event)"
+          (onError)="uploadError($event)"></p-fileUpload>
       </div>
 
       <div class="p-col-12 p-fluid" dir="rtl"

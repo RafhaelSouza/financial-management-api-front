@@ -77,6 +77,10 @@ export class EntriesFormComponent implements OnInit {
     return this.entryService.attachUploadUrl();
   }
 
+  uploadError(event) {
+    this.messageService.add({ severity: 'error', detail: 'An error has occurred trying to attach file' });
+  }
+
   setForm() {
     this.entryForm = this.formBuilder.group({
       id: [],
