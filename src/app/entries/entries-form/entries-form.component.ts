@@ -54,6 +54,25 @@ export class EntriesFormComponent implements OnInit {
     }
   }
 
+  finishAttachUpload(event) {
+    const attachment = event.originalEvent.body;
+
+    this.entryForm.patchValue({
+      attachment: attachment.name,
+      attachmentUrl: attachment.url
+    });
+  }
+
+  get attachmentName() {
+    const name = this.entryForm.get('attachment').value;
+
+    if (name) {
+      return name.substring(name.indexOf('_') + 1, name.length);
+    }
+
+    return '';
+  }
+
   get attachUploadUrl() {
     return this.entryService.attachUploadUrl();
   }
@@ -74,7 +93,9 @@ export class EntriesFormComponent implements OnInit {
         id: [ null, Validators.required ],
         name: []
       }),
-      observation: []
+      observation: [],
+      attachment: [],
+      attachmentUrl: []
     });
   }
 

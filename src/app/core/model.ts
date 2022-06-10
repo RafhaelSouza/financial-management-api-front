@@ -41,4 +41,6 @@ export class Entry {
   observation: string;
   person = new Person();
   category = new Category();
+  attachment: string;
+  attachmentUrl: string;
 }

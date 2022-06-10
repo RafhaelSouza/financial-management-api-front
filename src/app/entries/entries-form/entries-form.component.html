@@ -78,10 +78,18 @@
         <textarea name="observation" pInputTextarea rows="3" formControlName="observation"></textarea>
       </div>
 
-      <div style="margin-left: 90%;" class="p-col-6 p-col-offset-6 p-md-2 p-md-offset-10 p-fluid">
+      <div style="margin-left: 90%;" class="p-col-6 p-col-offset-6 p-md-2 p-md-offset-10 p-fluid"
+        *ngIf="!entryForm.get('attachment').value">
         <p-fileUpload name="attachment" mode="basic" auto="true" maxFileSize="100000000"
           chooseLabel="Attach" accept="image/*,application/*"
-          [url]="attachUploadUrl"></p-fileUpload>
+          [url]="attachUploadUrl"
+          (onUpload)="finishAttachUpload($event)"></p-fileUpload>
+      </div>
+
+      <div class="p-col-12 p-fluid" dir="rtl"
+        *ngIf="entryForm.get('attachment').value">
+        <a target="_blank" pTooltip="Download Attachment" tooltipPosition="top"
+          [href]="entryForm.get('attachmentUrl').value">{{ attachmentName }}</a>
       </div>
 
       <div class="p-col-12">
