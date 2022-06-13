@@ -94,8 +94,12 @@
 
       <div class="p-col-12 p-fluid" dir="rtl"
         *ngIf="entryForm.get('attachment').value">
+        <button pButton type="button" class="p-button-danger"
+          icon="pi pi-times" pTooltip="Delete Attachment" tooltipPosition="top"
+          (click)="deleteAttachment()"></button>
+        &nbsp;
         <a target="_blank" pTooltip="Download Attachment" tooltipPosition="top"
-          [href]="entryForm.get('attachmentUrl').value">{{ attachmentName }}</a>
+          [href]="entryForm.get('attachment_url').value">{{ attachmentName }}</a>
       </div>
 
       <div class="p-col-12">

@@ -42,5 +42,5 @@ export class Entry {
   person = new Person();
   category = new Category();
   attachment: string;
-  attachmentUrl: string;
+  attachment_url: string;
 }

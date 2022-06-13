@@ -64,10 +64,17 @@ export class EntriesFormComponent implements OnInit {
 
     this.entryForm.patchValue({
       attachment: attachment.name,
-      attachmentUrl: attachment.url
+      attachment_url: attachment.url
     });
 
     this.ongoingUpload = false;
+  }
+
+  deleteAttachment() {
+    this.entryForm.patchValue({
+      attachment: null,
+      attachment_url: null
+    });
   }
 
   uploadError(event) {
@@ -107,7 +114,7 @@ export class EntriesFormComponent implements OnInit {
       }),
       observation: [],
       attachment: [],
-      attachmentUrl: []
+      attachment_url: []
     });
   }
 
