@@ -13,6 +13,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { EntriesRoutingModule } from './entries-routing.module';
 import { EntriesSearchComponent } from './entries-search/entries-search.component';
@@ -28,6 +29,7 @@ import { EntriesFormComponent } from './entries-form/entries-form.component';
     FormsModule,
     ReactiveFormsModule,
 
+    ProgressSpinnerModule,
     FileUploadModule,
     InputTextModule,
     ButtonModule,

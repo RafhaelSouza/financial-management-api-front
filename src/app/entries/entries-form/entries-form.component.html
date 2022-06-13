@@ -83,8 +83,13 @@
         <p-fileUpload name="attachment" mode="basic" auto="true" maxFileSize="100000000"
           chooseLabel="Attach" accept="image/*,application/*"
           [url]="attachUploadUrl"
+          (onBeforeUpload)="beforeAttachmentUpload()"
           (onUpload)="finishAttachUpload($event)"
-          (onError)="uploadError($event)"></p-fileUpload>
+          (onError)="uploadError($event)"
+          [hidden]="ongoingUpload"></p-fileUpload>
+
+          <p-progressSpinner [hidden]="!ongoingUpload"
+            [style]="{ width: '25px', height: '25px' }"></p-progressSpinner>
       </div>
 
       <div class="p-col-12 p-fluid" dir="rtl"
@@ -94,7 +99,8 @@
       </div>
 
       <div class="p-col-12">
-        <button style="margin-right: 2px;" pButton type="submit" label="Save" [disabled]="entryForm.invalid"></button>
+        <button style="margin-right: 2px;" pButton type="submit" label="Save"
+        [disabled]="entryForm.invalid || ongoingUpload"></button>
         <button style="margin-right: 2px;" (click)="new()" pButton
           type="button" label="New" class="p-button-info"></button>
         <a routerLink="/entries">Back to search</a>

@@ -26,6 +26,7 @@ export class EntriesFormComponent implements OnInit {
   categories = [];
   persons = [];
   entryForm: FormGroup;
+	ongoingUpload = false;
 
   constructor(
     private title: Title,
@@ -54,6 +55,10 @@ export class EntriesFormComponent implements OnInit {
     }
   }
 
+	beforeAttachmentUpload() {
+		this.ongoingUpload = true;
+	}
+
   finishAttachUpload(event) {
     const attachment = event.originalEvent.body;
 
@@ -61,6 +66,13 @@ export class EntriesFormComponent implements OnInit {
       attachment: attachment.name,
       attachmentUrl: attachment.url
     });
+
+    this.ongoingUpload = false;
+  }
+
+  uploadError(event) {
+    this.messageService.add({ severity: 'error', detail: 'An error has occurred trying to attach file' });
+    this.ongoingUpload = false;
   }
 
   get attachmentName() {
@@ -75,10 +87,6 @@ export class EntriesFormComponent implements OnInit {
 
   get attachUploadUrl() {
     return this.entryService.attachUploadUrl();
-  }
-
-  uploadError(event) {
-    this.messageService.add({ severity: 'error', detail: 'An error has occurred trying to attach file' });
   }
 
   setForm() {
