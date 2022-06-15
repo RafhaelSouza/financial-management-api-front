@@ -57,15 +57,15 @@
       <div class="p-col-12 p-md-6 p-fluid">
         <label>State</label>
         <p-dropdown placeholder="Select one..."
-          [filter]="true" [options]="states"></p-dropdown>
+          [filter]="true" [options]="states"
+          [(ngModel)]="selectedState" name="selectedState"
+          (onChange)="loadCities()"></p-dropdown>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>City</label>
-        <input pInputText ngModel #city="ngModel" [(ngModel)]="person.address.city"
-          name="city" type="text" required>
-        <app-message [control]="city" error="required"
-          text="Type a city"></app-message>
+        <p-dropdown placeholder="Select one..."
+            [filter]="true" [options]="cities"></p-dropdown>
       </div>
 
       <div class="p-col-12">

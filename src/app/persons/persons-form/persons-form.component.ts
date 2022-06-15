@@ -18,6 +18,8 @@ export class PersonsFormComponent implements OnInit {
 
   person = new Person();
   states: any[];
+  cities: any[];
+  selectedState: number;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -42,6 +44,13 @@ export class PersonsFormComponent implements OnInit {
   loadStates() {
     this.personService.listStates().then(listStates => {
       this.states = listStates.map(state => ({ label: state.name, value: state.id }));
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  loadCities() {
+    this.personService.searchCities(this.selectedState).then(listCities => {
+      this.cities = listCities.map(cities => ({ label: cities.name, value: cities.id }));
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
