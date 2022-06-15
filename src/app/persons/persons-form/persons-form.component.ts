@@ -63,6 +63,12 @@ export class PersonsFormComponent implements OnInit {
     this.personService.searchById(id)
       .then(person => {
         this.person = person;
+        this.selectedState = (this.person.address.city) ?
+                this.person.address.city.state.id : null;
+
+        if (this.selectedState) {
+          this.loadCities();
+        }
         this.updateEditionTitle();
       })
       .catch(erro => this.errorHandler.handle(erro));

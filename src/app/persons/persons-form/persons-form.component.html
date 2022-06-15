@@ -59,13 +59,23 @@
         <p-dropdown placeholder="Select one..."
           [filter]="true" [options]="states"
           [(ngModel)]="selectedState" name="selectedState"
-          (onChange)="loadCities()"></p-dropdown>
+          (onChange)="loadCities()"
+          #state="ngModel" required></p-dropdown>
+
+        <app-message [control]="state" error="required"
+        text="Select a state"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>City</label>
         <p-dropdown placeholder="Select one..."
-            [filter]="true" [options]="cities"></p-dropdown>
+          [filter]="true" [options]="cities"
+          [(ngModel)]="person.address.city.id" name="city"
+          #city="ngModel" required
+          [disabled]="!selectedState"></p-dropdown>
+
+        <app-message [control]="city" error="required"
+        text="Select a city"></app-message>
       </div>
 
       <div class="p-col-12">
