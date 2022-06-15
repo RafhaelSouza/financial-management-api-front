@@ -2,7 +2,7 @@ import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Person } from '../core/model';
+import { City, Person, State } from '../core/model';
 
 export class PersonFilter {
   name: string;
@@ -14,9 +14,13 @@ export class PersonFilter {
 export class PersonService {
 
   personsUrl: string;
+  citiesUrl: string;
+  statesUrl: string;
 
   constructor(private http: HttpClient) {
     this.personsUrl = `${environment.apiUrl}/persons`;
+    this.citiesUrl = `${environment.apiUrl}/cities`;
+    this.statesUrl = `${environment.apiUrl}/states`;
   }
 
   search(filter: PersonFilter): Promise<any> {
@@ -97,4 +101,17 @@ export class PersonService {
       .toPromise()
       .then(() => null);
   }
+
+  listStates(): Promise<State[]> {
+    return this.http.get<State[]>(this.statesUrl).toPromise();
+  }
+
+  searchCities(state): Promise<City[]> {
+    const params = new HttpParams()
+      .append('Authorization', 'Basic YWRtaW5AZG9tYWluLmNvbTphZG1pbg==')
+      .set('state', state);
+
+    return this.http.get<City[]>(this.citiesUrl, { params }).toPromise();
+  }
+
 }

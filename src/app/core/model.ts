@@ -1,11 +1,21 @@
+export class State {
+  id: number;
+  name: string;
+}
+
+export class City {
+  id: number;
+  name: string;
+  state = new State();
+}
+
 export class Address {
   street: string;
   number: string;
   complement: string;
   district: string;
   postal_code: string;
-  city: string;
-  state: string;
+  city= new City();
 }
 
 export class Contact {
