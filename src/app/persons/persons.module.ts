@@ -10,6 +10,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PanelModule } from 'primeng/panel';
 import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsSearchComponent } from './persons-search/persons-search.component';
@@ -34,6 +35,7 @@ import { PersonsFormContactComponent } from './persons-form-contact/persons-form
     InputMaskModule,
     PanelModule,
     DialogModule,
+    DropdownModule,
 
     SharedModule,
     PersonsRoutingModule

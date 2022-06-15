@@ -17,6 +17,7 @@ import { Person } from '../../core/model';
 export class PersonsFormComponent implements OnInit {
 
   person = new Person();
+  states: any[];
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -31,10 +32,18 @@ export class PersonsFormComponent implements OnInit {
     const personId = this.route.snapshot.params['id'];
 
     this.title.setTitle('New person');
+    this.loadStates();
 
     if (personId) {
       this.loadPerson(personId);
     }
+  }
+
+  loadStates() {
+    this.personService.listStates().then(listStates => {
+      this.states = listStates.map(state => ({ label: state.name, value: state.id }));
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   get updating() {
