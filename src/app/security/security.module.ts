@@ -13,6 +13,7 @@ import { LogoutService } from './logout.service';
 import { SecurityRoutingModule } from './security-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ApiHttpInterceptor } from './api-http-interceptor';
+import { environment } from 'environments/environment';
 
 export function tokenGetter(): string {
   return localStorage.getItem('token');
@@ -30,8 +31,8 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['financial-management-api-r.herokuapp.com'],
-        disallowedRoutes: ['https://financial-management-api-r.herokuapp.com/oauth/token']
+        allowedDomains: environment.tokenAllowedDomains,
+        disallowedRoutes: environment.tokenDisallowedRoutes
       }
     }),
 
